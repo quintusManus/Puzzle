@@ -3,9 +3,9 @@ body {
     padding: 0;
     font-family: sans-serif;
     background-image: url(../images/darkMountains.jpg);
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 .container {
@@ -25,11 +25,4 @@ body {
     box-sizing: border-box;
     overflow: hidden;
     border-radius: 10px;
-}
-
-.btn-primary,
-.btn-primary:hover,
-.btn-primary:active,
-.btn-primary:visited {
-    background-color: #8064A2 !important;
 }

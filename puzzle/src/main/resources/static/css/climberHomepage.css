@@ -31,4 +31,53 @@ body{
     box-sizing: border-box;
     overflow: hidden;
     border-radius: 10px;
+    padding-top: 70px;
+    padding-left: 30px;;
+}
+
+ul {
+    color: white;
+}
+
+#sidebar {
+    /* don't forget to add all the previously mentioned styles here too */
+    color: #b29653;
+    transition: all 0.3s;
+
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #b29653;
+}
+
+#sidebar ul p {
+    color: white;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    color: #b29653;
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+
+#sidebar ul li a:hover {
+    color: #b29653;
+    background: #fff;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: #b29653;
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
 }

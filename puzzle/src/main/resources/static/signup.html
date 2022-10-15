@@ -14,11 +14,61 @@
 </head>
 
 <body>
+    
     <div class="container">
         <div class="box">
+            <div class="wrapper" style="
+          width:200px; position: absolute;
+">
+                <!-- Sidebar -->
+                <nav id="sidebar">
+                    <div class="sidebar-header">
+                        <h3>Puzzle</h3>
+                    </div>
+            
+                    <ul class="list-unstyled components">
+                        <p>Welcome!</p>
+                        <li class="active">
+                            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Homepage</a>
+                            <ul class="collapse list-unstyled" id="homeSubmenu">
+                                <li>
+                                    <a href="#">Climber</a>
+                                </li>
+                                <li>
+                                    <a href="#">Gym</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Admin</a>
+                        </li>
+                        <li>
+                            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                            <ul class="collapse list-unstyled" id="pageSubmenu">
+                                <li>
+                                    <a href="#">Page 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Page 2</a>
+                                </li>
+                                <li>
+                                    <a href="#">Page 3</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Sign Up</a>
+                        </li>
+                        <li>
+                            <a href="#">Log In</a>
+                        </li>
+                    </ul>
+                </nav>
+            
+            </div>
             <div class="row col-xl-6 offset-lg-3">
                 <div class="card" style="
-    margin-top: 85px;  width:500px;
+  width:500px;
 ">
                     <div th:if="${param.success}">
                         <div class="alert alert-info">You've successfully registered to Puzzle !</div>
