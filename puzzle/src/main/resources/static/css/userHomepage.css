@@ -111,15 +111,72 @@ h1{
     background: #fefffc;
     color: #008bc9;
     font-size: 30px;
+    white-space: nowrap;
+}
+
+.container .box .header_container .header .topnav {
+    display: inline-block;
+    overflow: hidden;
+    poistion: relative;
+    margin-left: 500px;
+    margin-bottom: -10px;
+}
+
+.container .box .header_container .header .topnav a{
+    float: left;
+    display: block;
+    color: #b29653;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.container .box .header_container .header .topnav input[type=text] {
+    float: right;
+    padding: 6px;
+    border: none;
+    background-color: #008bc9;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 12px;
+}
+
+.container .box .header_container .header .topnav input::placeholder {
+    color: #fefffc;
+    opacity: 1;
 }
 
 .container .box .header_container .info{
-    margin: 20px;
+    margin: 42px;
     color: #fefffc;
     line-hieght: 15px;
 }
 
+
+
 .container .box .header_container .info div{
     margin-bottom: 20px;
+}
+
+.container .box .header_container .info ul li::before {
+    content: "● ";
+    color: #b29653;
+    padding-right: 5px;
+}
+
+.container .box .header_container .info ul li {
+    position: relative;
+    width: calc(1200px - 800px);
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.container .box .header_container .info ul li a {
+    color: #fefffc;
+}
+
+.container .box .header_container .info ul li:hover a {
+    color: #b29653;
 }
 
