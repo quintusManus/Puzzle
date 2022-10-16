@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="css/climberHomepage.css">
+    <link rel="stylesheet" type="text/css" href="css/basetemplate.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -14,103 +14,68 @@
 </head>
 
 <body>
-
     <div class="container">
         <div class="box">
-            <div class="wrapper" style="width:200px; position: absolute;">
-                <!-- Sidebar -->
-                <nav id="sidebar">
-                    <div class="sidebar-header">
-                        <h3>Puzzle</h3>
-                    </div>
+            <h1>Puzzle</h1>
+            <div class="wrapper">
+                <div class="sidebar">
+                <ul id="tabs">
+                    <li class="active">
+                        <a href="index.html">Homepage</a>
+                    </li>
+                    <li>
+                        <a href="signup.html">Sign Up</a>
+                    </li>
+                </ul>
+                </div>
+                <div class="header_container" id="my_gyms">
+                    <div class="info">
+                        
+                        <div class="row col-xl-6 offset-lg-3">
+                            <div class="card" style=" width:500px; ">
+                                <!-- <div th:if="${param.error}">
+                                    <div class="alert alert-danger">Invalid Email or Password</div>
+                                </div>
+                                <div th:if="${param.logout}">
+                                    <div class="alert alert-success"> You have been logged out.</div>
+                                </div> -->
+                                <span id="textlogin"> 
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h2 class="text-center">Login</h2>
+                                    </div>
+                                    <div class="card-body">
+                                        <form method="post" role="form" th:action="@{/login}" class="form-horizontal">
+                                            <div class="form-group mb-3">
+                                                <label class="control-label">Email</label>
+                                                <input type="text" id="username" name="username" class="form-control"
+                                                    placeholder="Enter email address" />
+                                            </div>
+                        
+                                            <div class="form-group mb-3">
+                                                <label class="control-label"> Password</label>
+                                                <input type="password" id="password" name="password" class="form-control"
+                                                    placeholder="Enter password" />
+                                            </div>
+                                                <div class="form-group mb-3">
+                                                    <a class="btn btn-primary" href="climberHomepagedummy.html" role="button">Submit</a>
+                                                    </span>
+                                                    <span>Not registered? <a href="signup.html" th:href="@{/climberHomepageGyms}">Sign Up
+                                                                here</a></span>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                </span>
+                            </div>
 
-                    <ul class="list-unstyled components">
-                        <p>Welcome!</p>
-                        <!-- <li class="active">
-                            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
-                                class="dropdown-toggle">Homepage</a>
-                            <ul class="collapse list-unstyled" id="homeSubmenu">
-                                <li>
-                                    <a href="climberHomepage.html">Homepage</a>
-                            </li>
-                                <li>
-                                    <a href="#">Climber</a>
-                                </li>
-                                <li>
-                                    <a href="#">Gym</a>
-                                </li>
-                            </ul>
-                        </li> -->
-                        <li>
-                            <a href="climberHomepage.html">Homepage</a>
-                        </li>
-                        <li>
-                            <a href="admin.html">Admin</a>
-                        </li>
-                        <!-- <li>
-                            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
-                                class="dropdown-toggle">Pages</a>
-                            <ul class="collapse list-unstyled" id="pageSubmenu">
-                                <li>
-                                    <a href="#">Page 1</a>
-                                </li>
-                                <li>
-                                    <a href="#">Page 2</a>
-                                </li>
-                                <li>
-                                    <a href="#">Page 3</a>
-                                </li>
-                            </ul>
-                        </li> -->
-                        <li>
-                            <a href="signup.html">Sign Up</a>
-                        </li>
-                        <li>
-                            <a href="login.html">Log In</a>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- End of sidebar code -->
 
-            </div>
-            <div class="row col-xl-6 offset-lg-3">
-                <div class="card" style=" width:500px; ">
-                    <div th:if="${param.error}">
-                        <div class="alert alert-danger">Invalid Email or Password</div>
-                    </div>
-                    <div th:if="${param.logout}">
-                        <div class="alert alert-success"> You have been logged out.</div>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="card-header">
-                            <h2 class="text-center">Login Form</h2>
-                        </div>
-                        <div class="card-body">
-                            <form method="post" role="form" th:action="@{/login}" class="form-horizontal">
-                                <div class="form-group mb-3">
-                                    <label class="control-label"> Email</label>
-                                    <input type="text" id="username" name="username" class="form-control"
-                                        placeholder="Enter email address" />
-                                </div>
-                    
-                                <div class="form-group mb-3">
-                                    <label class="control-label"> Password</label>
-                                    <input type="password" id="password" name="password" class="form-control"
-                                        placeholder="Enter password" />
-                                </div>
-                                <div class="form-group mb-3">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    <span> Not registered ?
-                                        <a th:href="@{/register}">Register/Signup here</a>
-                                    </span>
-                                </div>
-                            </form>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
 
 </html>
