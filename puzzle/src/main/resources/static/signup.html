@@ -16,128 +16,71 @@
 <body>
     <div class="container">
         <div class="box">
-            <<<<<<< HEAD <h1>Puzzle</h1>
-                <div class="wrapper">
-                    <div class="sidebar">
-                        <ul id="tabs">
-                            <li class="active">
-                                <a href="index.html">Homepage</a>
-                                =======
-                                <div class="wrapper" style="width:200px; position: absolute;">
-                                    <!-- Sidebar -->
-                                    <nav id="sidebar">
-                                        <div class="sidebar-header">
-                                            <h3>Puzzle</h3>
-                                        </div>
-
-                                        <ul class="list-unstyled components">
-                                            <p>Welcome!</p>
-                                            <!-- <li class="active">
-                                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
-                                            class="dropdown-toggle">Homepage</a>
-                                        <ul class="collapse list-unstyled" id="homeSubmenu">
-                                            <li>
-                                                <a href="climberHomepage.html">Homepage</a>
-                                        </li>
-                                            <li>
-                                                <a href="#">Climber</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Gym</a>
-                                            </li>
-                                        </ul>
-                                    </li> -->
-                                            <li>
-                                                <a href="index.html">Homepage</a>
-                                            </li>
-                                            <li>
-                                                <a href="admin.html">Admin</a>
-                                            </li>
-                                            <!-- <li>
-                                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
-                                            class="dropdown-toggle">Pages</a>
-                                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                                            <li>
-                                                <a href="#">Page 1</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Page 2</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Page 3</a>
-                                            </li>
-                                        </ul>
-                                    </li> -->
-                                            <li>
-                                                <a href="signup.html">Sign Up</a>
-                                                >>>>>>> b17d9a9c5046fb957b449d660bb716a4b6b8076d
-                                            </li>
-                                            <li>
-                                                <a href="login.html">Log In</a>
-                                            </li>
-                                        </ul>
-                                </div>
-                                <div class="header_container" id="my_gyms">
-                                    <div id="textlogin" class="row col-xl-6 offset-lg-3">
-                                        <div class="card" style="width:500px;">
-                                            <!-- <div th:if="${param.success}">
+            <h1>Puzzle</h1>
+            <div class="wrapper">
+                <div class="sidebar">
+                    <ul id="tabs">
+                        <li class="active">
+                            <a href="index.html">Homepage</a>
+                        </li>
+                        <li>
+                            <a href="login.html">Log In</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="header_container" id="my_gyms">
+                    <div id="textlogin" class="row col-xl-6 offset-lg-3">
+                        <div class="card" style="width:500px;">
+                            <!-- <div th:if="${param.success}">
                                     <div class="alert alert-info">You've successfully registered to Puzzle !</div>
                                 </div> -->
-                                            <div class="card-header">
-                                                <h2 class="text-center">Registration</h2>
-                                            </div>
-                                            <div class="card-body">
-                                                <form method="post" role="form" th:action="@{/register/save}"
-                                                    th:object="${user}">
+                            <div class="card-header">
+                                <h2 class="text-center">Registration</h2>
+                            </div>
+                            <div class="card-body">
+                                <form method="post" role="form" th:action="@{/register/save}" th:object="${user}">
 
-                                                    <div class="form-group mb-3">
-                                                        <label class="form-label">First Name</label>
-                                                        <input class="form-control" id="firstName" name="firstName"
-                                                            placeholder="Enter first name" th:field="*{firstName}"
-                                                            type="text" />
-                                                        <p th:errors="*{firstName}" class="text-danger"
-                                                            th:if="${#fields.hasErrors('firstName')}">
-                                                        </p>
-                                                    </div>
-
-                                                    <div class="form-group mb-3">
-                                                        <label class="form-label">Last Name</label>
-                                                        <input class="form-control" id="lastName" name="lastName"
-                                                            placeholder="Enter last name" th:field="*{lastName}"
-                                                            type="text" />
-                                                        <p th:errors="*{lastName}" class="text-danger"
-                                                            th:if="${#fields.hasErrors('lastName')}">
-                                                        </p>
-                                                    </div>
-                                                    <div class="form-group mb-3">
-                                                        <label class="form-label">Email</label>
-                                                        <input class="form-control" id="email" name="email"
-                                                            placeholder="Enter email address" th:field="*{email}"
-                                                            type="email" />
-                                                        <p th:errors="*{email}" class="text-danger"
-                                                            th:if="${#fields.hasErrors('email')}">
-                                                        </p>
-                                                    </div>
-                                                    <div class="form-group mb-3">
-                                                        <label class="form-label">Password</label>
-                                                        <input class="form-control" id="password" name="password"
-                                                            placeholder="Enter password" th:field="*{password}"
-                                                            type="password" />
-                                                        <p th:errors="*{password}" class="text-danger"
-                                                            th:if="${#fields.hasErrors('password')}">
-                                                        </p>
-                                                    </div>
-
-                                                    <div class="form-group mb-3">
-                                                        <button class="btn btn-primary" type="submit">Sign Up</button>
-                                                        <span>Already registered? <a href="login.html"
-                                                                th:href="@{/login}">Login
-                                                                here</a></span>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">First Name</label>
+                                        <input class="form-control" id="firstName" name="firstName"
+                                            placeholder="Enter first name" th:field="*{firstName}" type="text" />
+                                        <p th:errors="*{firstName}" class="text-danger"
+                                            th:if="${#fields.hasErrors('firstName')}">
+                                        </p>
                                     </div>
-                                </div>
+
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Last Name</label>
+                                        <input class="form-control" id="lastName" name="lastName"
+                                            placeholder="Enter last name" th:field="*{lastName}" type="text" />
+                                        <p th:errors="*{lastName}" class="text-danger"
+                                            th:if="${#fields.hasErrors('lastName')}">
+                                        </p>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Email</label>
+                                        <input class="form-control" id="email" name="email"
+                                            placeholder="Enter email address" th:field="*{email}" type="email" />
+                                        <p th:errors="*{email}" class="text-danger"
+                                            th:if="${#fields.hasErrors('email')}">
+                                        </p>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label class="form-label">Password</label>
+                                        <input class="form-control" id="password" name="password"
+                                            placeholder="Enter password" th:field="*{password}" type="password" />
+                                        <p th:errors="*{password}" class="text-danger"
+                                            th:if="${#fields.hasErrors('password')}">
+                                        </p>
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <a class="btn btn-primary" href="climberHomepagedummy.html" role="button">Sign Up</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
+                </div>
+            </div>
 </body>
