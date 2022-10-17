@@ -1,10 +1,17 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> dd7a4a9facdb3edc7d504a53c8680f47b9c19794
 /* 
     Created on : Oct 14, 2022, 9:22:11 PM
     Author     : smuska
 */
 
+<<<<<<< HEAD
 *{
+=======
+* {
+>>>>>>> dd7a4a9facdb3edc7d504a53c8680f47b9c19794
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -13,14 +20,22 @@
     font-family: sans-serif;
 }
 
+<<<<<<< HEAD
 body{
+=======
+body {
+>>>>>>> dd7a4a9facdb3edc7d504a53c8680f47b9c19794
     background-image: url(../images/darkMountains.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 }
 
+<<<<<<< HEAD
 h1{
+=======
+h1 {
+>>>>>>> dd7a4a9facdb3edc7d504a53c8680f47b9c19794
     font-weight: normal;
     font-size: 40px;
     text-transform: uppercase;
@@ -30,14 +45,22 @@ h1{
     color: #fefffc;
 }
 
+<<<<<<< HEAD
 .container{
+=======
+.container {
+>>>>>>> dd7a4a9facdb3edc7d504a53c8680f47b9c19794
     position: relative;
     width: 1200px;
     height: 800px;
     margin: 100px auto;
 }
 
+<<<<<<< HEAD
 .container .box{
+=======
+.container .box {
+>>>>>>> dd7a4a9facdb3edc7d504a53c8680f47b9c19794
     position: relative;
     width: calc(1200px - 30px);
     height: calc(800px - 30px);
@@ -54,7 +77,11 @@ h1{
     position: relative;
 }
 
+<<<<<<< HEAD
 .container .box .wrapper .sidebar{
+=======
+.container .box .wrapper .sidebar {
+>>>>>>> dd7a4a9facdb3edc7d504a53c8680f47b9c19794
     position: relative;
     width: calc(1200px - 1000px);
     height: calc(800px - 30px);
@@ -64,15 +91,24 @@ h1{
 
 .container .box .wrapper .sidebar ul li {
     padding: 15px;
+<<<<<<< HEAD
     border-bottom: 1px solid rgba(0,0,0,0.05);
     border-top: 1px solid rgba(225,225,225,0.05);
 }
 
 .container .box .wrapper .sidebar ul li a{
+=======
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(225, 225, 225, 0.05);
+}
+
+.container .box .wrapper .sidebar ul li a {
+>>>>>>> dd7a4a9facdb3edc7d504a53c8680f47b9c19794
     color: #b29653;
     display: block;
 }
 
+<<<<<<< HEAD
 .container .box .wrapper .sidebar ul li a .fas{
     width: 25px;
 }
@@ -82,6 +118,17 @@ h1{
 }
 
 .container .box .wrapper .sidebar ul li:hover a{
+=======
+.container .box .wrapper .sidebar ul li a .fas {
+    width: 25px;
+}
+
+.container .box .wrapper .sidebar ul li:hover {
+    background: #b29653;
+}
+
+.container .box .wrapper .sidebar ul li:hover a {
+>>>>>>> dd7a4a9facdb3edc7d504a53c8680f47b9c19794
     color: #dcfcfc;
 }
 
@@ -89,7 +136,11 @@ h1{
     background: #dcfcfc;
 }
 
+<<<<<<< HEAD
 .container .box .wrapper .sidebar .inactive a{
+=======
+.container .box .wrapper .sidebar .inactive a {
+>>>>>>> dd7a4a9facdb3edc7d504a53c8680f47b9c19794
     color: #b29653;
 }
 
@@ -101,16 +152,25 @@ h1{
     color: #dcfcfc;
 }
 
+<<<<<<< HEAD
 .container .box .header_container{
     width: calc(1200px - 30px);
 }
 
 .container .box .header_container .header{
+=======
+.container .box .header_container {
+    width: calc(1200px - 30px);
+}
+
+.container .box .header_container .header {
+>>>>>>> dd7a4a9facdb3edc7d504a53c8680f47b9c19794
     position: relative;
     padding: 30px;
     background: #fefffc;
     color: #008bc9;
     font-size: 30px;
+<<<<<<< HEAD
 }
 
 .container .box .header_container .info{
@@ -119,7 +179,77 @@ h1{
     line-hieght: 15px;
 }
 
+=======
+    white-space: nowrap;
+}
+
+.container .box .header_container .header .topnav {
+    display: inline-block;
+    overflow: hidden;
+    poistion: relative;
+    margin-left: 500px;
+    margin-bottom: -10px;
+}
+
+.container .box .header_container .header .topnav a{
+    float: left;
+    display: block;
+    color: #b29653;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.container .box .header_container .header .topnav input[type=text] {
+    float: right;
+    padding: 6px;
+    border: none;
+    background-color: #008bc9;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 12px;
+}
+
+.container .box .header_container .header .topnav input::placeholder {
+    color: #fefffc;
+    opacity: 1;
+}
+
+.container .box .header_container .info{
+    margin: 42px;
+    color: #fefffc;
+    line-height: 15px;
+}
+
+
+
+>>>>>>> dd7a4a9facdb3edc7d504a53c8680f47b9c19794
 .container .box .header_container .info div{
     margin-bottom: 20px;
 }
 
+<<<<<<< HEAD
+=======
+.container .box .header_container .info ul li::before {
+    content: "● ";
+    color: #b29653;
+    padding-right: 5px;
+}
+
+.container .box .header_container .info ul li {
+    position: relative;
+    width: calc(1200px - 800px);
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.container .box .header_container .info ul li a {
+    color: #fefffc;
+}
+
+.container .box .header_container .info ul li:hover a {
+    color: #b29653;
+}
+
+>>>>>>> dd7a4a9facdb3edc7d504a53c8680f47b9c19794
