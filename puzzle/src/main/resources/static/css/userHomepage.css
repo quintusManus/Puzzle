@@ -153,10 +153,30 @@ h1{
     line-hieght: 15px;
 }
 
+.container .box .header_container .info .button{
+    border: none;
+    background-color: #dcfcfc;
+    color: #b29653;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin-left: 22px;
+    margin-bottom: 30px;
+    margin-top: -10px;
+    transition-duration: 0.1s;
+    cursor: pointer;
+}
 
-
+.container .box .header_container .info .button:hover{
+    background-color: #b29653;
+    color: #dcfcfc;
+}    
+    
 .container .box .header_container .info div{
     margin-bottom: 20px;
+    margin-left: 21px;
 }
 
 .container .box .header_container .info ul li::before {
