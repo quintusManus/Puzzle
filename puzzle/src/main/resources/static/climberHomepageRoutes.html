@@ -1,48 +1,50 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Climber Homepage Routes</title>
-        <link rel="stylesheet" type="text/css" href="css/userHomepage.css">
-        <link rel="stylesheet" href="styles.css">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div class ="container">
-            <div class="box">
-                <h1>Puzzle</h1>
-                <div class="wrapper">
-                    <div class="sidebar">
-                        <ul id="tabs">
-                            <li class="active">
-                                <a href="#top">My Climbing Routes</a>
-                            </li>
-                            <li class="inactive">
-                                <a href="climberHomepageGyms.html">My Climbing Gyms</a>
+<head>
+  <title>Climber Homepage Routes</title>
+  <link rel="stylesheet" type="text/css" href="css/userHomepage.css">
+  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <h1>Puzzle</h1>
+            <div class="wrapper">
+                <div class="sidebar">
+                    <ul id="tabs">
+                        <li>
+                            <a href="climberHomepagedummy.html">Home</a> <!-- We can put in a logo here and make onclick = homepage-->
+                        </li>
+                        <li class="active">
+                            <a href="#top">My Climbing Routes</a>
+                        </li>
+                        <li class="inactive">
+                            <a href="climberHomepageGyms.html">My Climbing Gyms</a>
+                        </li>
+                        <li>
+                            <a href="index.html">Log Out</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="header_container" id="my_routes">
+                    <div class="header">My Climbing Routes</div>
+                    <div class="info">
+                        <div></div>
+                        <ul id="my_route_list">
+                            <li>
+                                <a href="#top">Kelp Forest</a>
                             </li>
                             <li>
-                                <a href="index.html">Log Out</a>
+                                <a href="#top">The Bridge of Khazad Dum</a>
                             </li>
                         </ul>
-                    </div>
-                    <div class="header_container" id="my_routes">
-                        <div class="header">My Climbing Routes</div>
-                        <div class="info">
-                            <form action="#top">
-                                <button class="button">Add Route</button>
-                            </form>
-                            <ul id="my_route_list">
-                                <li>
-                                    <a href="#top">Kelp Forest</a>
-                                </li>
-                                <li>
-                                    <a href="#top">The Bridge of Khazad Dum</a>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>

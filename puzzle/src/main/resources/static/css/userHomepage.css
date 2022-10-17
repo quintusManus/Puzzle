@@ -1,10 +1,9 @@
-
 /* 
     Created on : Oct 14, 2022, 9:22:11 PM
     Author     : smuska
 */
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -13,14 +12,14 @@
     font-family: sans-serif;
 }
 
-body{
+body {
     background-image: url(../images/darkMountains.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 }
 
-h1{
+h1 {
     font-weight: normal;
     font-size: 40px;
     text-transform: uppercase;
@@ -30,14 +29,14 @@ h1{
     color: #fefffc;
 }
 
-.container{
+.container {
     position: relative;
     width: 1200px;
     height: 800px;
     margin: 100px auto;
 }
 
-.container .box{
+.container .box {
     position: relative;
     width: calc(1200px - 30px);
     height: calc(800px - 30px);
@@ -54,7 +53,7 @@ h1{
     position: relative;
 }
 
-.container .box .wrapper .sidebar{
+.container .box .wrapper .sidebar {
     position: relative;
     width: calc(1200px - 1000px);
     height: calc(800px - 30px);
@@ -64,24 +63,24 @@ h1{
 
 .container .box .wrapper .sidebar ul li {
     padding: 15px;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    border-top: 1px solid rgba(225,225,225,0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(225, 225, 225, 0.05);
 }
 
-.container .box .wrapper .sidebar ul li a{
+.container .box .wrapper .sidebar ul li a {
     color: #b29653;
     display: block;
 }
 
-.container .box .wrapper .sidebar ul li a .fas{
+.container .box .wrapper .sidebar ul li a .fas {
     width: 25px;
 }
 
-.container .box .wrapper .sidebar ul li:hover{
+.container .box .wrapper .sidebar ul li:hover {
     background: #b29653;
 }
 
-.container .box .wrapper .sidebar ul li:hover a{
+.container .box .wrapper .sidebar ul li:hover a {
     color: #dcfcfc;
 }
 
@@ -89,7 +88,7 @@ h1{
     background: #dcfcfc;
 }
 
-.container .box .wrapper .sidebar .inactive a{
+.container .box .wrapper .sidebar .inactive a {
     color: #b29653;
 }
 
@@ -101,11 +100,11 @@ h1{
     color: #dcfcfc;
 }
 
-.container .box .header_container{
+.container .box .header_container {
     width: calc(1200px - 30px);
 }
 
-.container .box .header_container .header{
+.container .box .header_container .header {
     position: relative;
     padding: 30px;
     background: #fefffc;
@@ -150,7 +149,7 @@ h1{
 .container .box .header_container .info{
     margin: 42px;
     color: #fefffc;
-    line-hieght: 15px;
+    line-height: 15px;
 }
 
 .container .box .header_container .info .button{
@@ -177,6 +176,27 @@ h1{
 .container .box .header_container .info div{
     margin-bottom: 20px;
     margin-left: 21px;
+}
+
+.container .box .header_container .info ul li::before {
+    content: "● ";
+    color: #b29653;
+    padding-right: 5px;
+}
+
+.container .box .header_container .info ul li {
+    position: relative;
+    width: calc(1200px - 800px);
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.container .box .header_container .info ul li a {
+    color: #fefffc;
+}
+
+.container .box .header_container .info ul li:hover a {
+    color: #b29653;
 }
 
 .container .box .header_container .info ul li::before {
