@@ -72,10 +72,6 @@ h1 {
     display: block;
 }
 
-.container .box .wrapper .sidebar ul li a .fas {
-    width: 25px;
-}
-
 .container .box .wrapper .sidebar ul li:hover {
     background: #b29653;
 }
@@ -152,17 +148,71 @@ h1 {
     line-height: 15px;
 }
 
+.container .box .header_container .info .chart{
+    width: 45%;
+    margin-left: 500px;
+    margin-top: -220px;
+    position: relative;
+}
+
+.container .box .header_container .info .table-input input[type=text]{
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    background-color: #dcfcfc;
+    border: none;
+    overflow: hidden;
+    position: relative;
+    width: 12.65%;
+    display: inline-block;
+}
+
+.container .box .header_container .info table {
+    border: solid 1px #fefffc;
+    width: 45%;
+    margin-left: 20px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    z-index: 10;
+}
+
+.container .box .header_container .info table tr th{
+    border: solid 1px #fefffc;
+    padding: 5px;
+}
+
+.container .box .header_container .info table tr td {
+    border: solid 1px #fefffc;
+    padding: 5px;
+}
+
+.container .box .header_container .info .headings{
+    margin-left: 40px;
+    font-size: 15px;
+}
+
+.container .box .header_container .info .headings input[type=text]{
+    display: block;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-top: 10px;
+    background-color: #dcfcfc;
+    border: none;
+    overflow: hidden;
+    position: relative;
+}
+
 .container .box .header_container .info .button{
     border: none;
     background-color: #dcfcfc;
     color: #b29653;
-    padding: 10px 16px;
+    padding: 5px 8px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 15px;
     margin-left: 22px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     margin-top: -10px;
     transition-duration: 0.1s;
     cursor: pointer;
@@ -172,6 +222,46 @@ h1 {
     background-color: #b29653;
     color: #dcfcfc;
 }    
+
+.container .box .header_container .info .button2{
+    border: none;
+    background-color: #dcfcfc;
+    color: #b29653;
+    padding: 5px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin-left: 750px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    transition-duration: 0.1s;
+    cursor: pointer;
+}
+
+.container .box .header_container .info .button2:hover{
+    background-color: #b29653;
+    color: #dcfcfc;
+}
+
+.container .box .header_container .info .button3{
+    border: none;
+    background-color: #dcfcfc;
+    color: #b29653;
+    padding: 5px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+    margin-top: 10px;
+    transition-duration: 0.1s;
+    cursor: pointer;
+}
+
+.container .box .header_container .info .button3:hover{
+    background-color: #b29653;
+    color: #dcfcfc;
+}  
     
 .container .box .header_container .info div{
     margin-bottom: 20px;

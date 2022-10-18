@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Climb Off CV</title>
+        <title>Delete Kelp Forest GV</title>
         <link rel="stylesheet" type="text/css" href="css/userHomepage.css">
         <link rel="stylesheet" href="styles.css">
         <meta charset="UTF-8">
@@ -15,13 +15,13 @@
                     <div class="sidebar">
                         <ul id="tabs">
                             <li class="inactive">
-                                <a href="hangingRockCGRoutesCV.html">Climbing Routes</a>
+                                <a href="#top">Home</a> <!-- We can put in a logo here and make onclick = homepage-->
                             </li>
                             <li class="active">
-                                <a href="hangingRockCGEventsCV.html">Events</a>
+                                <a href="#top">Climbing Routes</a>
                             </li>
-                            <li>
-                                <a href="climberHomepageRoutes.html">Back to Profile</a>
+                            <li class="inactive">
+                                <a href="gymHomepageEvents.html">Events</a>
                             </li>
                             <li>
                                 <a href="index.html">Log Out</a>
@@ -29,12 +29,16 @@
                         </ul>
                     </div>
                     <div class="header_container" id="my_gyms">
-                        <div class="header">The Hanging Rock Climbing Gym: Saturday Climb Off</div>
+                        <div class="header">Climbing Routes</div>
                         <div class="info">
-                            <div>
-                            Join us on Saturday for a some casual competitive climbing. Event
-                            starts at 11:00am. Lunch provided at 12:30pm.
-                            </div>
+                            <form action="gymHomepageCreateRoute.html">
+                                <button class="button">Create Route</button>
+                            </form>
+                            <ul id="my_route_list">
+                                <li>
+                                    <a href="crackenGV.html">The Crack-en</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>

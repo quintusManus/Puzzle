@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Crack-en GV</title>
+        <title>Gym Homepage Edit Route Crack-en</title>
         <link rel="stylesheet" type="text/css" href="css/userHomepage.css">
         <link rel="stylesheet" href="styles.css">
         <meta charset="UTF-8">
@@ -14,7 +14,7 @@
                 <div class="wrapper">
                     <div class="sidebar">
                         <ul id="tabs">
-                            <li>
+                            <li class="inactive">
                                 <a href="#top">Home</a> <!-- We can put in a logo here and make onclick = homepage-->
                             </li>
                             <li class="active">
@@ -28,26 +28,29 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="header_container" id="my_routes">
-                        <div class="header">The Greensboro Climbing Gym: The Crack-en</div>
+                    <div class="header_container" id="my_gyms">
+                        <div class="header">The Crack-en</div>
                         <div class="info">
-                            <form action="gymHomepageEditRouteCracken.html">
-                                <button class="button">Edit Route</button>
-                            </form>
-                            <form action="deleteCrackenGV.html">
-                                <button class="button">Delete Route</button>
-                            </form>
-                            <ul id="cracken">
+                            <ul id="new_route">
                                 <li>
                                     General Information
-                                    <ul id="gen_info">
-                                        <li>Difficulty Level: 5.8</li>
-                                        <li>Climbing Style: Top-Rope</li>
-                                        <li>Environment: Indoor</li>
-                                        <li>Notes: The crack is on.</li>
-                                    </ul>
                                 </li>
                             </ul>
+                            <div class="headings">
+                                Name:
+                                <input type="text" placeholder="The Crack-en">
+                                Difficulty Level:
+                                <input type="text" placeholder="5.8">
+                                Climbing Style:
+                                <input type="text" placeholder="Top-Rope">
+                                Environment:
+                                <input type="text" placeholder="Indoor">
+                                Notes:
+                                <input type="text" placeholder="The crack is on.">
+                            </div>
+                            <form action="gymHomepageRoutes.html">
+                                <button class="button2">Save Changes</button>
+                            </form>
                         </div>
                     </div>
                 </div>
