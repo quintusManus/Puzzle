@@ -21,7 +21,7 @@
                 <div class="sidebar">
                     <ul id="tabs">
                         <li class="active">
-                            <a href="#top">Home</a>   <!-- We can put in a logo here and make onclick = homepage-->
+                            <a href="#top">Home</a> <!-- We can put in a logo here and make onclick = homepage-->
                         </li>
                         <li>
                             <a href="climberHomepageRoutes.html">My Climbing Routes</a>
@@ -35,30 +35,35 @@
                     </ul>
                 </div>
 
-                    <div class="header_container" id="my_gyms">
-                        <div class="header">Home</div>
-                        <div th:if="${param.logout}"></div>  
-                        <h5><div class="alert alert-success"> You are successfully logged in !</div></h5> <!-- This is an example of javascript interpolation for variable storing in your /resources/static/js folder -->
-                        <div class="info">
-                            <div>
+                <div class="header_container" id="my_gyms">
+                    <div class="header">Home</div>
+                    <div th:if="${param.logout}"></div>
+                    <h5>
+                        <div class="alert alert-success"> You have successfully subscribed to puzzle !</div>
+                    </h5>
+                    <!-- This is an example of javascript interpolation for variable storing in your /resources/static/js folder -->
+                    <div class="info">
+                        <div>
 
-                             <span id="textlogin"></span>   
+                            <span id="textlogin"></span>
 
-                             <br><br>
+                            <br><br>
+                            Welcome to puzzle ! Go far !<br><br><br><br>
 
-                            <span id="textlogin">************************Anchor inspirational quote generator API here"**************************</span><br><br><br>
+                            <span id="textlogin">************************Anchor inspirational quote generator API
+                                here"**************************</span><br><br><br>
 
 
-                            </div>
                         </div>
-                        <div th:if="${param.logout}"></div>
                     </div>
-
-
-                    </div>
+                    <div th:if="${param.logout}"></div>
                 </div>
+
+
             </div>
         </div>
+    </div>
+    </div>
     </div>
 </body>
 
