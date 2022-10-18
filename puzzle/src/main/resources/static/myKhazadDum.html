@@ -1,15 +1,134 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>My Khazad Dum</title>
+        <link rel="stylesheet" type="text/css" href="css/userHomepage.css">
+        <link rel="stylesheet" href="styles.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
     </head>
     <body>
-        <div>TODO write content</div>
+        <div class ="container">
+            <div class="box">
+                <h1>Puzzle</h1>
+                <div class="wrapper">
+                    <div class="sidebar">
+                        <ul id="tabs">
+                            <li class="inactive">
+                                <a href="#top">Home</a>
+                            </li>
+                            <li class="active">
+                                <a href="climberHomepageRoutes.html">My Climbing Routes</a>
+                            </li>
+                            <li class="inactive">
+                                <a href="climberHomepageGyms.html">My Climbing Gyms</a>
+                            </li>
+                            <li>
+                                <a href="index.html">Log Out</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header_container" id="my_routes">
+                        <div class="header">The Bridge of Khazad Dum</div>
+                        <div class="info">
+                            <form action="myKhazadDumEdit.html">
+                                <button class="button">Edit Route</button>
+                            </form>
+                            <form action="deleteMyKhazadDum.html">
+                                <button class="button">Delete Route</button>
+                            </form>
+                            <ul id="cracken">
+                                <li>
+                                    General Information
+                                    <ul id="gen_info">
+                                        <li>Difficulty Level: 5.9</li>
+                                        <li>Climbing Style: Top-Rope</li>
+                                        <li>Environment: Indoor</li>
+                                        <li>Notes: Natural is on.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="chart">
+                                <canvas id="myChart"></canvas>
+                            </div>
+                            <div class="table-input">
+                                Date:
+                                <input type="text" name="date" id="date">
+                                Number of Falls:
+                                <input type="text" name="num-falls" id="num-falls">
+                                <input class="button3" type="button" value="Add Attempt" onClick="addRow()" id="add">
+                            </div>
+                            <table id="table">
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Number of Falls</th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function addRow() {
+                "use strict";
+                
+                var table = document.getElementById("table");
+                var row = document.createElement("tr");
+                var td1 = document.createElement("td");
+                var td2 = document.createElement("td");
+                
+                
+                td1.innerHTML = document.getElementById("date").value;
+                td2.innerHTML = document.getElementById("num-falls").value;
+                
+                row.appendChild(td1);
+                row.appendChild(td2);
+                
+                table.children[0].appendChild(row);
+            }
+        </script>
+        <script>
+            new Chart(document.getElementById('myChart'), {
+                type: 'scatter',  
+                data: {
+                    labels: ['2022-10-08', '2022-10-09', '2022-10-10', '2022-10-11', '2022-10-12', '2022-10-13', '2022-10-14'],
+                    datasets: [{
+                    label: 'My Dataset',
+                    data: [12, 11, 13, 10, 8, 8, 6],
+                    fill: false,
+                    backgroundColor: 'white',
+                    borderColor: 'white'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        text: 'Progress Report'
+                    },
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                    yAxes: [{
+                        ticks: {
+                            min: 0,
+                            max: 20,
+                            stepSize: 1
+                        }
+                    }],
+                    xAxes: [{
+                        type: 'time',
+                        time: {
+                        unit: 'day',
+                        tooltipFormat: 'MMM DD'
+                        }
+                    }]
+                    }
+                    }
+            });
+        </script>
     </body>
 </html>
