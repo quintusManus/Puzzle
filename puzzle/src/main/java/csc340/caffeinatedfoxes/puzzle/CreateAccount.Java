@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 
-public class Fields {
+public class CreateAccount {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
