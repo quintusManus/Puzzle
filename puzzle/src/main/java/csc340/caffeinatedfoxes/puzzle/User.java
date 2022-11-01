@@ -3,6 +3,8 @@ package csc340.caffeinatedfoxes.puzzle;
 public class User {
     protected Long id;
     protected String email;
+    protected String password;
+    protected String type;
 
     public Long getId() {
         return id;
@@ -35,9 +37,6 @@ public class User {
     public void setType(String type) {
         this.type = type;
     }
-
-    protected String password;
-    protected String type;
 
     public User(String email, String password, String type) {
         this.email = email;
