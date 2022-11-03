@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    >
+    
+<head>
+    <link rel="stylesheet" type="text/css" href="css/basetemplate.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Users in SQL database</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <h1>Puzzle</h1>
+            <div class="wrapper">
+                <div class="sidebar">
+                    <ul id="tabs">
+                        <li class="active">
+                            <a href="index.html">Homepage</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/}">Log Out</a>
+                        </li>
+                    </ul>
+                </div>
+    <div>
+        <table id="test" class="table table-striped table-bordered" style="color: white;">
+            <thead class="thead-dark">
+                <tr>
+                    <th>User ID</th>
+                    <th>E-mail</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user: ${listUsers}">
+                    <td th:text="${user.id}">User ID</td>
+                    <td th:text="${user.email}">E-mail</td>
+                    <td th:text="${user.firstName}">First Name</td>
+                    <td th:text="${user.lastName}">Last Name</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</div>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+</body>
+</html>
