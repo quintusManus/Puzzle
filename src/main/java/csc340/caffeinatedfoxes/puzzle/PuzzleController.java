@@ -66,4 +66,23 @@ public class PuzzleController {
             model.addAttribute("user", new User());
             return "login";
         }
+
+        
+        @GetMapping("/climber")
+        public String climberHomepage(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+		model.addAttribute("name", name);
+		return "climberHomepage";
+	}
+        
+        @GetMapping("/climber/routes")
+        public String climberHomepageRoutes(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+		model.addAttribute("name", name);
+		return "climberHomepageRoutes";
+	}
+        
+        @GetMapping("/climber/gyms")
+        public String climberHomepageGyms(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+		model.addAttribute("name", name);
+		return "climberHomepageGyms";
+	}
 }
