@@ -14,5 +14,16 @@ public class PuzzleController {
 		model.addAttribute("name", name);
 		return "index";
 	}
-
+        
+        @GetMapping("/climber")
+        public String climberHomepage(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+		model.addAttribute("name", name);
+		return "climberHomepage";
+	}
+        
+        @GetMapping("/climber/routes")
+        public String climberHomepageRoutes(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+		model.addAttribute("name", name);
+		return "climberHomepageRoutes";
+	}
 }
