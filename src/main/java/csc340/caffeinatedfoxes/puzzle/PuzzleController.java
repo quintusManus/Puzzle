@@ -2,6 +2,9 @@ package csc340.caffeinatedfoxes.puzzle;
 
 import csc340.caffeinatedfoxes.puzzle.user.User;
 import csc340.caffeinatedfoxes.puzzle.user.UserRepository;
+import csc340.caffeinatedfoxes.puzzle.api.api;
+
+import java.io.IOException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -10,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -22,7 +26,13 @@ public class PuzzleController {
     private UserRepository userRepo;
      
     @GetMapping("")
-    public String index() {
+    public String index(Model model) throws IOException {
+        api.randomQuote();
+        String quote = api.quote;
+        String author = api.author;
+
+        model.addAttribute("quote", quote);
+        model.addAttribute("author", author);
         return "index";
     }
     
