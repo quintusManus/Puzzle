@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    >
+
+<head>
+    <link rel="stylesheet" type="text/css" href="css/basetemplate.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Sign Up</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <h1>Puzzle</h1>
+            <div class="wrapper">
+                <div class="sidebar">
+                    <ul id="tabs">
+                        <li class="active">
+                            <a href="index.html">Homepage</a>
+                        </li>
+                        <li>
+                            <a href="login.html">Log In</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="header_container" id="my_gyms">
+                    <div id="textlogin" class="row col-xl-6 offset-lg-3">
+                        <div class="card" style="width:500px;">
+                            <div class="text-center">
+                                    <h3>You have signed up successfully!</h3>
+                                    <h4><a th:href="@{/login}">Click here to Login</a></h4>
+                            </div>
+                    </div>
+                </div>
+            </div>
+</body>
