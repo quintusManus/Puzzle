@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
         <title>Climber Homepage Add Route</title>
-        <link rel="stylesheet" type="text/css" href="css/userHomepage.css">
-        <link rel="stylesheet" href="styles.css">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link th:href="@{/css/userHomepage.css}" rel="stylesheet"/>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
         <div class ="container">
@@ -15,16 +14,16 @@
                     <div class="sidebar">
                         <ul id="tabs">
                             <li class="inactive">
-                                <a href="climberHomepagedummy.html">Home</a> <!-- We can put in a logo here and make onclick = homepage-->
+                                <a href="/climber">Home</a> <!-- We can put in a logo here and make onclick = homepage-->
                             </li>
                             <li class="active">
-                                <a href="climberHomepageRoutes.html">My Climbing Routes</a>
+                                <a href="/climber/routes">My Climbing Routes</a>
                             </li>
                             <li class="inactive">
-                                <a href="climberHomepageGyms.html">My Climbing Gyms</a>
+                                <a href="/climber/gyms">My Climbing Gyms</a>
                             </li>
                             <li>
-                                <a href="index.html">Log Out</a>
+                                <a href="/">Log Out</a>
                             </li>
                         </ul>
                     </div>
@@ -38,15 +37,15 @@
                             </ul>
                             <div class="headings">
                                 Name:
-                                <input type="text">
+                                <input type="text"></input>
                                 Difficulty Level:
-                                <input type="text">
+                                <input type="text"></input>
                                 Climbing Style:
-                                <input type="text">
-                                Environment:
-                                <input type="text">
+                                <input type="text"></input>
+                                Location/Environment:
+                                <input type="text"></input>
                                 Notes:
-                                <input type="text">
+                                <input type="text"></input>
                             </div>
                             <form action="climberHomepageRoutes.html">
                                 <button class="button2">Add Route</button>

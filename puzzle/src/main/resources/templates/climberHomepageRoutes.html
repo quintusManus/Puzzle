@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <link rel="stylesheet" type="text/css" href="../static/css/userHomepage.css"/>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link th:href="@{/css/userHomepage.css}" rel="stylesheet" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Climber Homepage Routes</title>
 </head>
 
@@ -31,15 +31,12 @@
                 <div class="header_container" id="my_routes">
                     <div class="header">My Climbing Routes</div>
                     <div class="info">
-                        <form action="climberHomepageAddRoute.html">
+                        <form action="/climber/routes/add">
                             <button class="button">Add Route</button>
                         </form>
                         <ul id="my_route_list">
-                            <li>
-                                <a href="myKelpForest.html">Kelp Forest</a>
-                            </li>
-                            <li>
-                                <a href="myKhazadDum.html">The Bridge of Khazad Dum</a>
+                            <li th:each="route : ${routeList}">
+                                <a th:text="${route.name}"></a>
                             </li>
                         </ul>
                     </div>
