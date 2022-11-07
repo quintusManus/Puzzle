@@ -26,9 +26,9 @@ public class RouteRepository {
     NamedParameterJdbcTemplate template;
     
     public List<Route> getAllRoutes() {
-        String query = "select id, routeName,difficulty, locationAndEnvironment, notes from route"; //Query we're typing on MySQL?
+        String query = "select id, name, difficulty, locationAndEnvironment, notes from route"; //Query we're typing on MySQL?
         return template.query(query, //Template runs the query and gives a list of results.
                 (result, rowNum)
-                -> new Route(result.getLong("id"), result.getString("routeName"), result.getString("difficulty"), result.getString("locationAndEnvironment"), result.getString("notes")));
+                -> new Route(result.getLong("id"), result.getString("name"), result.getString("difficulty"), result.getString("locationAndEnvironment"), result.getString("notes")));
     }
 }

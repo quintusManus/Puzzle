@@ -32,7 +32,7 @@ public class PuzzleController {
         @GetMapping("/climber/routes")
         public String getAllRoutes(Model model) {
             model.addAttribute("routeList", repo.getAllRoutes());
-            return "climberHomepageRoutes";
+            return "routes";
         }
         
         @GetMapping("/climber/routes/add")
