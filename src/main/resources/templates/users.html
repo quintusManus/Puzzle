@@ -49,6 +49,9 @@
                     <td th:text="${user.email}">E-mail</td>
                     <td th:text="${user.firstName}">First Name</td>
                     <td th:text="${user.lastName}">Last Name</td>
+                    <td>
+                        <a th:href="@{'/deleteUser/' + ${user.id}}" class="btn btn-danger" role="button">Delete</a>
+                    </td>
                 </tr>
                 
             </tbody>
