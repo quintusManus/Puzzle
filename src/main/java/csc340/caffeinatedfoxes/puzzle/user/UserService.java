@@ -17,4 +17,8 @@ public class UserService {
     public List<User> getAllUsers(){
         return repo.findAll();
     }
+
+    public void deleteUser(Long id){
+        repo.deleteById(id);
+    }
 }
