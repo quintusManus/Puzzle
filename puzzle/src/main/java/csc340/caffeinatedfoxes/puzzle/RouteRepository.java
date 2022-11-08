@@ -31,4 +31,14 @@ public class RouteRepository {
                 (result, rowNum)
                 -> new Route(result.getLong("id"), result.getString("name"), result.getString("difficulty"), result.getString("locationAndEnvironment"), result.getString("notes")));
     }
+    
+    public int addRoute(String name, String difficulty, String locationAndEnvironment, String notes) {
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("name", name);
+        paramMap.put("difficulty", difficulty);
+        paramMap.put("locationAndEnvironment", locationAndEnvironment);
+        paramMap.put("notes", notes);
+        String query = "INSERT INTO route(name, difficulty, locationAndEnvironment, notes) VALUES(:name, :difficulty, :locationAndEnvironment, :notes)";
+        return template.update(query, paramMap);
+    }
 }

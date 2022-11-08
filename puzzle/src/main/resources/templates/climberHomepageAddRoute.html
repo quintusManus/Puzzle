@@ -35,20 +35,20 @@
                                     General Information
                                 </li>
                             </ul>
+                            <form action="#" th:action="@{/climber/routes/add}" method="post" th:object="${route}">
                             <div class="headings">
                                 Name:
-                                <input type="text"></input>
+                                <input type="text" th:field="*{name}"></input>
                                 Difficulty Level:
-                                <input type="text"></input>
-                                Climbing Style:
-                                <input type="text"></input>
+                                <input type="text" th:field="*{difficulty}"></input>
+                                <!--Climbing Style:
+                                <input type="text"></input>-->
                                 Location/Environment:
-                                <input type="text"></input>
+                                <input type="text" th:field="*{locationAndEnvironment}"></input>
                                 Notes:
-                                <input type="text"></input>
+                                <input type="text" th:field="*{route.notes}"></input>
                             </div>
-                            <form action="climberHomepageRoutes.html">
-                                <button class="button2">Add Route</button>
+                            <button class="button2" type="submit">Add Route</button>
                             </form>
                         </div>
                     </div>

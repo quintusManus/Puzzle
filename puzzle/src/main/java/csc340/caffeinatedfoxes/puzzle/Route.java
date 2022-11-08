@@ -17,7 +17,7 @@ public class Route {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected long id;
-    protected String routeName;
+    protected String name;
     protected String difficulty;
     protected String locationAndEnvironment;
     protected String notes;
@@ -30,12 +30,12 @@ public class Route {
         this.id = id;
     }
 
-    public String getRouteName() {
-        return routeName;
+    public String getName() {
+        return name;
     }
 
-    public void setRouteName(String routeName) {
-        this.routeName = routeName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDifficulty() {
@@ -65,16 +65,16 @@ public class Route {
     public Route() {
     }
 
-    public Route(String routeName, String difficulty, String locationAndEnvironment, String notes) {
-        this.routeName = routeName;
+    public Route(String name, String difficulty, String locationAndEnvironment, String notes) {
+        this.name = name;
         this.difficulty = difficulty;
         this.locationAndEnvironment = locationAndEnvironment;
         this.notes = notes;
     }
 
-    public Route(long id, String routeName, String difficulty, String locationAndEnvironment, String notes) {
+    public Route(long id, String name, String difficulty, String locationAndEnvironment, String notes) {
         this.id = id;
-        this.routeName = routeName;
+        this.name = name;
         this.difficulty = difficulty;
         this.locationAndEnvironment = locationAndEnvironment;
         this.notes = notes;
