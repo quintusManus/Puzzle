@@ -13,22 +13,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/**
+ * @author smuska
+ * The main application controller class.
+ * Last Updated: 11/8/2022
+ */
 @Controller
 public class PuzzleController {
     
         @Autowired
         private RouteRepository repo;
+        
+        @Autowired
+        private GymRouteRepository repo2;
 
 	@GetMapping("/")
-	public String index(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-		model.addAttribute("name", name);
-		return "index";
+	public String index() {
+            return "index";
 	}
         
         @GetMapping("/climber")
-        public String climberHomepage(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-		model.addAttribute("name", name);
-		return "climberHomepage";
+        public String climberHomepage() {
+            return "climberHomepage";
 	}
         
         @GetMapping("/climber/routes")
@@ -37,24 +43,62 @@ public class PuzzleController {
             return "climberHomepageRoutes";
         }
         
+        @GetMapping("/climber/routes/{id}")
+        public String getRouteByID(@PathVariable("id") long id, Model model) {
+            Route route = new Route();
+            model.addAttribute("route", repo.getRouteById(id));
+            return "climberHomepageRoute";
+        }
+        
         @GetMapping("/climber/routes/add")
-        @ResponseBody
         public String addRoute(Model model){
             Route route = new Route();
             model.addAttribute("route", route);
-            repo.addRoute(route.name, route.difficulty, route.locationAndEnvironment, route.notes);
-            
             return "climberHomepageAddRoute";
         }
         
-        @PostMapping("/climber/route/add")
-        public String submitRoute(@ModelAttribute("route") Route route) {
+        @PostMapping("/climber/routes/add")
+        public String submitRoute(@ModelAttribute("route") Route route, Model model) {
+            repo.addRoute(route.name, route.difficulty, route.climbingStyle, route.locationAndEnvironment, route.notes);
+            model.addAttribute("routeList", repo.getAllRoutes());
             return "climberHomepageRoutes";
         }
         
         @GetMapping("/climber/gyms")
-        public String climberHomepageGyms(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-		model.addAttribute("name", name);
+        public String climberHomepageGyms() {
 		return "climberHomepageGyms";
 	}
+        
+        @GetMapping("/gym")
+        public String gymHomepage(Model model) {
+		model.addAttribute("gymrouteList", repo2.getAllRoutes());
+		return "gymHomepageRoutes";
+	}
+        
+        @GetMapping("/gym/routes")
+        public String getAllGymRoutes(Model model) {
+            model.addAttribute("gymrouteList", repo2.getAllRoutes());
+            return "gymHomepageRoutes";
+        }
+        
+        @GetMapping("/gym/routes/{id}")
+        public String getGymRouteByID(@PathVariable("id") long id, Model model) {
+            GymRoute gymroute = new GymRoute();
+            model.addAttribute("gymroute", repo2.getRouteById(id));
+            return "gymHomepageRoute";
+        }
+        
+        @GetMapping("/gym/routes/create")
+        public String createGymRoute(Model model){
+            GymRoute gymroute = new GymRoute();
+            model.addAttribute("gymroute", gymroute);
+            return "gymHomepageCreateRoute";
+        }
+        
+        @PostMapping("/gym/routes/create")
+        public String submitGymRoute(@ModelAttribute("gymroute") GymRoute gymroute, Model model) {
+            repo2.createRoute(gymroute.name, gymroute.difficulty, gymroute.climbingStyle, gymroute.locationAndEnvironment, gymroute.notes);
+            model.addAttribute("gymrouteList", repo2.getAllRoutes());
+            return "gymHomepageRoutes";
+        }
 }

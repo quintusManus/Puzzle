@@ -1,4 +1,3 @@
-
 package csc340.caffeinatedfoxes.puzzle;
 
 
@@ -17,42 +16,36 @@ import org.springframework.stereotype.Repository;
 
 /**
  * @author smuska
- * This class includes methods for sending queries to the route database.
+ * This class includes methods for sending queries to the gymroute database.
  * Last Updated: 11/8/2022
  */
 @Repository
-public class RouteRepository {
+public class GymRouteRepository {
     
     @Autowired
     NamedParameterJdbcTemplate template;
     
-    public List<Route> getAllRoutes() {
-        String query = "select id, name, difficulty, climbingStyle, locationAndEnvironment, notes from route";
+    public List<GymRoute> getAllRoutes() {
+        String query = "select id, name, difficulty, climbingStyle, locationAndEnvironment, notes from gymroute";
         return template.query(query,
                 (result, rowNum)
-                -> new Route(result.getLong("id"), result.getString("name"), result.getString("difficulty"), result.getString("climbingStyle"), result.getString("locationAndEnvironment"), result.getString("notes")));
+                -> new GymRoute(result.getLong("id"), result.getString("name"), result.getString("difficulty"), result.getString("climbingStyle"), result.getString("locationAndEnvironment"), result.getString("notes")));
     }
     
-    public Route getRouteById(long id) {
+    public GymRoute getRouteById(long id) {
         SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("id", id);
-        String query = "select * from route where id=:id";
-        return template.queryForObject(query, namedParameters, BeanPropertyRowMapper.newInstance(Route.class));
+        String query = "select * from gymroute where id=:id";
+        return template.queryForObject(query, namedParameters, BeanPropertyRowMapper.newInstance(GymRoute.class));
     }
     
-    public int addRoute(String name, String difficulty, String climbingStyle, String locationAndEnvironment, String notes) {
+    public int createRoute(String name, String difficulty, String climbingStyle, String locationAndEnvironment, String notes) {
         Map<String, Object> paramMap = new HashMap<String, Object>();
         paramMap.put("name", name);
         paramMap.put("difficulty", difficulty);
         paramMap.put("climbingStyle", climbingStyle);
         paramMap.put("locationAndEnvironment", locationAndEnvironment);
         paramMap.put("notes", notes);
-        String query = "INSERT INTO route(name, difficulty, climbingStyle, locationAndEnvironment, notes) VALUES(:name, :difficulty, :climbingStyle, :locationAndEnvironment, :notes)";
+        String query = "INSERT INTO gymroute(name, difficulty, climbingStyle, locationAndEnvironment, notes) VALUES(:name, :difficulty, :climbingStyle, :locationAndEnvironment, :notes)";
         return template.update(query, paramMap);
-    }
-    
-    public int deleteRoute(long id) {
-        SqlParameterSource namedParameters = new MapSqlParameterSource("id", id);
-        String query = "DELETE FROM route WHERE id = ?";
-        return template.update(query, namedParameters);
     }
 }

@@ -36,7 +36,7 @@
                         </form>
                         <ul id="my_route_list">
                             <li th:each="route : ${routeList}">
-                                <a th:text="${route.name}"></a>
+                                <a th:href="@{/climber/routes/{id}(id=${route.id})}" th:text="${route.name}"></a>
                             </li>
                         </ul>
                     </div>

@@ -1,5 +1,12 @@
 package csc340.caffeinatedfoxes.puzzle;
 
+
+/**
+ * @author bwoods
+ * This class allows the construction of a User objects and includes methods
+ * for getting and setting such an object's attributes.
+ * Last Updated: 11/8/2022
+ */
 public class User {
     protected Long id;
     protected String email;

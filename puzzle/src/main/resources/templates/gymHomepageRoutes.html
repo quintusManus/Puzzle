@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Gym Homepage Routes</title>
-        <link rel="stylesheet" type="text/css" href="css/userHomepage.css">
-        <link rel="stylesheet" href="styles.css">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link th:href="@{/css/userHomepage.css}" rel="stylesheet" />
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
         <div class ="container">
@@ -21,25 +20,22 @@
                                 <a href="#top">Climbing Routes</a>
                             </li>
                             <li class="inactive">
-                                <a href="gymHomepageEvents.html">Events</a>
+                                <a href="#top">Events</a>
                             </li>
                             <li>
-                                <a href="index.html">Log Out</a>
+                                <a href="/">Log Out</a>
                             </li>
                         </ul>
                     </div>
                     <div class="header_container" id="my_gyms">
                         <div class="header">Climbing Routes</div>
                         <div class="info">
-                            <form action="gymHomepageCreateRoute.html">
+                            <form action="/gym/routes/create">
                                 <button class="button">Create Route</button>
                             </form>
-                            <ul id="my_route_list">
-                                <li>
-                                    <a href="kelpForestGV.html">Kelp Forest</a>
-                                </li>
-                                <li>
-                                    <a href="crackenGV.html">The Crack-en</a>
+                            <ul >
+                                <li th:each="gymroute : ${gymrouteList}">
+                                    <a th:href="@{/gym/routes/{id}(id=${gymroute.id})}" th:text="${gymroute.name}"></a>
                                 </li>
                             </ul>
                         </div>

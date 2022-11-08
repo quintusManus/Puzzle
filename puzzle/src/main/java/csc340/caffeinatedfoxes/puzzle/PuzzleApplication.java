@@ -7,6 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
+/**
+ * @author smuska, sdbridges, bwoods
+ * The main class for running the application.
+ * Last Updated: 11/8/2022
+ */
 //excluding these two that cause errors related to sql and accessing pages respectively
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class, SecurityAutoConfiguration.class  })
 public class PuzzleApplication {

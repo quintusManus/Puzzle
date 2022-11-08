@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-        <title>Gym Homepage Add Route</title>
-        <link rel="stylesheet" type="text/css" href="css/userHomepage.css">
-        <link rel="stylesheet" href="styles.css">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gym Homepage Create Route</title>
+        <link th:href="@{/css/userHomepage.css}" rel="stylesheet"/>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
         <div class ="container">
@@ -15,16 +14,16 @@
                     <div class="sidebar">
                         <ul id="tabs">
                             <li class="inactive">
-                                <a href="#top">Home</a> <!-- We can put in a logo here and make onclick = homepage-->
+                                <a href="/gym/routes">Home</a> <!-- We can put in a logo here and make onclick = homepage-->
                             </li>
                             <li class="active">
-                                <a href="gymHomepageRoutes.html">Climbing Routes</a>
+                                <a href="/gym/routes">Climbing Routes</a>
                             </li>
                             <li class="inactive">
-                                <a href="gymHomepageEvents.html">Events</a>
+                                <a href="#top">Events</a>
                             </li>
                             <li>
-                                <a href="index.html">Log Out</a>
+                                <a href="/">Log Out</a>
                             </li>
                         </ul>
                     </div>
@@ -36,20 +35,20 @@
                                     General Information
                                 </li>
                             </ul>
+                            <form action="#" th:action="@{/gym/routes/create}" method="post" th:object="${gymroute}">
                             <div class="headings">
                                 Name:
-                                <input type="text">
+                                <input type="text" th:field="*{name}"></input>
                                 Difficulty Level:
-                                <input type="text">
+                                <input type="text" th:field="*{difficulty}"></input>
                                 Climbing Style:
-                                <input type="text">
-                                Environment:
-                                <input type="text">
+                                <input type="text" th:field="*{climbingStyle}"></input>
+                                Location/Environment:
+                                <input type="text" th:field="*{locationAndEnvironment}"></input>
                                 Notes:
-                                <input type="text">
+                                <input type="text" th:field="*{notes}"></input>
                             </div>
-                            <form action="gymHomepageRoutes.html">
-                                <button class="button2">Create Route</button>
+                            <button class="button2" type="submit">Create Route</button>
                             </form>
                         </div>
                     </div>
