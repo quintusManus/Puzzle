@@ -33,8 +33,9 @@
                             <form action="#top">
                                 <button class="button">Edit Route</button>
                             </form>
-                            <form action="#top">
-                                <button class="button">Delete Route</button>
+                            <form action="#" th:action="@{/gym/routes}" method="post" th:object="${gymroute}">
+                                <input type="hidden" th:field="*{id}"/>
+                                <button class="button" type="submit">Delete Route</button>
                             </form>
                             <ul>
                                 <li>

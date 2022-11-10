@@ -81,6 +81,14 @@ public class Route {
     }
 
     /**
+     * Constructs a Route object with only the id attribute.
+     * @param id 
+     */
+    public Route(long id) {
+        this.id = id;
+    }
+
+    /**
      * Constructs a Route object. Excludes the id attribute.
      * @param name
      * @param difficulty

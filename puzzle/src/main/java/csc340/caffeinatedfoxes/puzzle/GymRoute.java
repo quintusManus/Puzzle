@@ -80,6 +80,14 @@ public class GymRoute {
     }
 
     /**
+     * Constructs a GymRoute object with the id attribute.
+     * @param id 
+     */
+    public GymRoute(long id) {
+        this.id = id;
+    }
+
+    /**
      * Constructs a GymRoute object. Excludes the id attribute.
      * @param name
      * @param difficulty

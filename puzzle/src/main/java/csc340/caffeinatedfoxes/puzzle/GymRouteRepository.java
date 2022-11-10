@@ -48,4 +48,10 @@ public class GymRouteRepository {
         String query = "INSERT INTO gymroute(name, difficulty, climbingStyle, locationAndEnvironment, notes) VALUES(:name, :difficulty, :climbingStyle, :locationAndEnvironment, :notes)";
         return template.update(query, paramMap);
     }
+    
+    public int deleteGymRoute(long id) {
+        SqlParameterSource namedParameters = new MapSqlParameterSource("id", id);
+        String query = "DELETE FROM gymroute WHERE id = " + id;
+        return template.update(query, namedParameters);
+    }
 }

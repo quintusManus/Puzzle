@@ -52,7 +52,7 @@ public class RouteRepository {
     
     public int deleteRoute(long id) {
         SqlParameterSource namedParameters = new MapSqlParameterSource("id", id);
-        String query = "DELETE FROM route WHERE id = ?";
+        String query = "DELETE FROM route WHERE id = " + id;
         return template.update(query, namedParameters);
     }
 }

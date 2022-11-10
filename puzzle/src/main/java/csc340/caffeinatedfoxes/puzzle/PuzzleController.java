@@ -43,9 +43,15 @@ public class PuzzleController {
             return "climberHomepageRoutes";
         }
         
+        @PostMapping("/climber/routes")
+        public String deleteRouteByID(@ModelAttribute("route") Route route, Model model) {
+            repo.deleteRoute(route.id);
+            model.addAttribute("routeList", repo.getAllRoutes());
+            return "climberHomepageRoutes";
+        }
+        
         @GetMapping("/climber/routes/{id}")
         public String getRouteByID(@PathVariable("id") long id, Model model) {
-            Route route = new Route();
             model.addAttribute("route", repo.getRouteById(id));
             return "climberHomepageRoute";
         }
@@ -81,9 +87,15 @@ public class PuzzleController {
             return "gymHomepageRoutes";
         }
         
+        @PostMapping("/gym/routes")
+        public String deleteGymRouteByID(@ModelAttribute("gymroute") GymRoute gymRoute, Model model) {
+            repo2.deleteGymRoute(gymRoute.id);
+            model.addAttribute("gymrouteList", repo2.getAllRoutes());
+            return "gymHomepageRoutes";
+        }
+        
         @GetMapping("/gym/routes/{id}")
         public String getGymRouteByID(@PathVariable("id") long id, Model model) {
-            GymRoute gymroute = new GymRoute();
             model.addAttribute("gymroute", repo2.getRouteById(id));
             return "gymHomepageRoute";
         }
