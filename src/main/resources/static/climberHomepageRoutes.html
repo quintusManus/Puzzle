@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    >
+<head>
+  <title>Climber Homepage Routes</title>
+  <link rel="stylesheet" type="text/css" href="css/userHomepage.css">
+  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <h1>Puzzle</h1>
+            <div class="wrapper">
+                <div class="sidebar">
+                    <ul id="tabs">
+                        <li class="inactive">
+                            <a href="/climber">Home</a> <!-- We can put in a logo here and make onclick = homepage-->
+                        </li>
+                        <li class="active">
+                            <a href="#top">My Climbing Routes</a>
+                        </li>
+                        <li class="inactive">
+                            <a href="climberHomepageGyms.html">My Climbing Gyms</a>
+                        </li>
+                        <li>
+                            <form th:action="@{/logout}" method="post">
+                            <input type="submit" class="btn btn-primary" value="Log Out" />
+                        </li>
+                    </ul>
+                </div>
+                <div class="header_container" id="my_routes">
+                    <div class="header">My Climbing Routes</div>
+                    <div class="info">
+                        <form action="climberHomepageAddRoute.html">
+                            <button class="button">Add Route</button>
+                        </form>
+                        <ul id="my_route_list">
+                            <li>
+                                <a href="myKelpForest.html">Kelp Forest</a>
+                            </li>
+                            <li>
+                                <a href="myKhazadDum.html">The Bridge of Khazad Dum</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

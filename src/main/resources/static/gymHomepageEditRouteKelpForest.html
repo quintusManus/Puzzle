@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Gym Homepage Edit Route Kelp Forest</title>
+        <link rel="stylesheet" type="text/css" href="css/userHomepage.css">
+        <link rel="stylesheet" href="styles.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class ="container">
+            <div class="box">
+                <h1>Puzzle</h1>
+                <div class="wrapper">
+                    <div class="sidebar">
+                        <ul id="tabs">
+                            <li class="inactive">
+                                <a href="#top">Home</a> <!-- We can put in a logo here and make onclick = homepage-->
+                            </li>
+                            <li class="active">
+                                <a href="gymHomepageRoutes.html">Climbing Routes</a>
+                            </li>
+                            <li class="inactive">
+                                <a href="gymHomepageEvents.html">Events</a>
+                            </li>
+                            <li>
+                                <a href="index.html">Log Out</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header_container" id="my_gyms">
+                        <div class="header">Kelp Forest</div>
+                        <div class="info">
+                            <ul id="new_route">
+                                <li>
+                                    General Information
+                                </li>
+                            </ul>
+                            <div class="headings">
+                                Name:
+                                <input type="text" placeholder="Kelp Forest">
+                                Difficulty Level:
+                                <input type="text" placeholder="5.9">
+                                Climbing Style:
+                                <input type="text" placeholder="Top-Rope">
+                                Environment:
+                                <input type="text" placeholder="Indoor">
+                                Notes:
+                                <input type="text" placeholder="Good luck!">
+                            </div>
+                            <form action="gymHomepageRoutes.html">
+                                <button class="button2">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

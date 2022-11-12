@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+        <title>Climber Homepage Add Route</title>
+        <link th:href="@{/css/userHomepage.css}" rel="stylesheet"/>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div class ="container">
+            <div class="box">
+                <h1>Puzzle</h1>
+                <div class="wrapper">
+                    <div class="sidebar">
+                        <ul id="tabs">
+                            <li class="inactive">
+                                <a href="/climber">Home</a> <!-- We can put in a logo here and make onclick = homepage-->
+                            </li>
+                            <li class="active">
+                                <a href="/climber/routes">My Climbing Routes</a>
+                            </li>
+                            <li class="inactive">
+                                <a href="/climber/gyms">My Climbing Gyms</a>
+                            </li>
+                            <li>
+                                <a href="/">Log Out</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header_container" id="my_gyms">
+                        <div class="header">Add Route</div>
+                        <div class="info">
+                            <ul id="new_route">
+                                <li>
+                                    General Information
+                                </li>
+                            </ul>
+                            <form action="#" th:action="@{/climber/routes/add}" method="post" th:object="${route}">
+                            <div class="headings">
+                                Name:
+                                <input type="text" th:field="*{name}"></input>
+                                Difficulty Level:
+                                <input type="text" th:field="*{difficulty}"></input>
+                                Climbing Style:
+                                <input type="text" th:field="*{climbingStyle}"></input>
+                                Location/Environment:
+                                <input type="text" th:field="*{locationAndEnvironment}"></input>
+                                Notes:
+                                <input type="text" th:field="*{notes}"></input>
+                            </div>
+                            <button class="button2" type="submit">Add Route</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
