@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2022 at 06:25 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Nov 12, 2022 at 09:49 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,29 +29,12 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `gymroute` (
   `id` bigint(20) NOT NULL,
-  `climbing_style` varchar(255) DEFAULT NULL,
+  `climbingStyle` varchar(255) DEFAULT NULL,
   `difficulty` varchar(255) DEFAULT NULL,
-  `location_and_environment` varchar(255) DEFAULT NULL,
+  `locationAndEnvironment` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `notes` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `hibernate_sequence`
---
-
-CREATE TABLE `hibernate_sequence` (
-  `next_val` bigint(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `hibernate_sequence`
---
-
-INSERT INTO `hibernate_sequence` (`next_val`) VALUES
-(1);
 
 -- --------------------------------------------------------
 
@@ -61,12 +44,19 @@ INSERT INTO `hibernate_sequence` (`next_val`) VALUES
 
 CREATE TABLE `route` (
   `id` bigint(20) NOT NULL,
-  `climbing_style` varchar(255) DEFAULT NULL,
+  `climbingStyle` varchar(255) DEFAULT NULL,
   `difficulty` varchar(255) DEFAULT NULL,
-  `location_and_environment` varchar(255) DEFAULT NULL,
+  `locationAndEnvironment` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `notes` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `route`
+--
+
+INSERT INTO `route` (`id`, `climbingStyle`, `difficulty`, `locationAndEnvironment`, `name`, `notes`) VALUES
+(1, 'flash', '5', 'rocky', 'grunge', 'good luck');
 
 -- --------------------------------------------------------
 
@@ -108,6 +98,18 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `gymroute`
+--
+ALTER TABLE `gymroute`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `route`
+--
+ALTER TABLE `route`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
