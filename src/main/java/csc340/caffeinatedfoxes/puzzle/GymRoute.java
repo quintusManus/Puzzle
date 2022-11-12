@@ -17,7 +17,7 @@ import javax.persistence.Table;
 @Table(name = "gymroute")
 public class GymRoute {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected long id;
     protected String name;
     protected String difficulty;

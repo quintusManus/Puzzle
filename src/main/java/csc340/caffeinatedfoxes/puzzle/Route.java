@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @Table(name = "route")
 public class Route {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected long id;
     protected String name;
     protected String difficulty;
