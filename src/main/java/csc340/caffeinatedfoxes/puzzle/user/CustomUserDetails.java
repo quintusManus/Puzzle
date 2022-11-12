@@ -1,4 +1,4 @@
-package csc340.caffeinatedfoxes.puzzle.user;
+/*package csc340.caffeinatedfoxes.puzzle.user;
 
 import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
@@ -49,4 +49,4 @@ public class CustomUserDetails implements UserDetails {
 	public String getFullName() {
 		return user.getFirstName() + " " + user.getLastName();
 	}
-}
+}*/

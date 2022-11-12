@@ -1,4 +1,4 @@
-package csc340.caffeinatedfoxes.puzzle.user;
+/*package csc340.caffeinatedfoxes.puzzle.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,4 +17,4 @@ public class CustomUserDetailsService implements UserDetailsService {
 		}
 		return new CustomUserDetails(user);
 	}
-}
+}*/

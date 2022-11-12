@@ -83,8 +83,7 @@ public class PuzzleController {
 
         
         @GetMapping("/climber")
-        public String climberHomepage(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-		model.addAttribute("name", name);
+        public String climberHomepage(Model model) {
 		return "climberHomepage";
 	}
         
