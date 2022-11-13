@@ -19,7 +19,7 @@
 </head>
 
 <body>
-                		<form th:action="@{/logout}" method="post">
+
 			<p>
 				
 			</p>
@@ -30,12 +30,8 @@
             <div class="wrapper">
                 <div class="sidebar">
                     <ul id="tabs">
-                        <li class="active">
-                            <a href="index.html">Homepage</a>
-                        </li>
                         <li>
-                            <form th:action="@{/logout}" method="post">
-                            <input type="submit" class="btn btn-primary" value="Log Out" />
+                            <a th:href="@{/}"Homepage class="btn btn-primary" value="Log Out">Log Out</a>
                         </li>
                     </ul>
                 </div>
@@ -46,6 +42,7 @@
                 <tr>
                     <th>User ID</th>
                     <th>E-mail</th>
+                    <th>Password</th>
                     <th>Name</th>
                     <th>Type</th>
                 </tr>
@@ -54,8 +51,9 @@
                 <tr th:each="user: ${listUsers}">
                     <td th:text="${user.id}">User ID</td>
                     <td th:text="${user.email}">E-mail</td>
-                    <td th:text="${user.name}">First Name</td>
-                    <td th:text="${user.type}">Last Name</td>
+                    <td th:text="${user.password}">Password</td>
+                    <td th:text="${user.name}">Name</td>
+                    <td th:text="${user.type}">Type</td>
                     <td>
                         <a th:href="@{'/deleteUser/' + ${user.id}}" class="btn btn-danger" role="button">Delete</a>
                     </td>

@@ -62,22 +62,24 @@ public class PuzzleController {
         return "login";
     }
 
-    @GetMapping("/climberLogin")
-    public String climberLogin(Model model) {
-        model.addAttribute("user", new User());
-        return "climberLogin";
-    }
-
-    @GetMapping("/gymLogin")
-    public String gymLogin(Model model) {
-        model.addAttribute("user", new User());
-        return "gymLogin";
-    }
-
     @RequestMapping("/authenticate")
-    public String authenticateUser(@RequestParam(value = "email", required = false) String email) {
-        if(userRepo.findByEmail("email")){
-            return "redirect:/users";
+    public String authenticateUser(@RequestParam(value = "email", required = false) String email,
+                                   @RequestParam(value = "password", required = false) String password) {
+        boolean value = userRepo.existsByEmail(email);
+        boolean value2 = userRepo.existsByPassword(password);
+        if(value && value2){
+            List<User> listUsers = userRepo.findByEmail(email);
+            User user = listUsers.get(0);
+            String type = user.getType();
+            if(type.equals("admin")) {
+                return "redirect:/users";
+            }
+            else if(type.equals("climber")) {
+                return "redirect:/climber";
+            }
+            if(type.equals("gym")){
+                return "redirect:/gym";
+            }
         }
         return "redirect:/login";
     }
