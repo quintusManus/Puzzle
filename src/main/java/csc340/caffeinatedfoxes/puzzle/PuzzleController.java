@@ -11,12 +11,7 @@ import org.springframework.stereotype.Controller;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.util.RouteMatcher.Route;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -60,8 +55,35 @@ public class PuzzleController {
         userRepo.save(user);
         return "register_success";
     }
-    
-	@GetMapping("/users")
+
+    @GetMapping("/login")
+    public String login(Model model) {
+        model.addAttribute("user", new User());
+        return "login";
+    }
+
+    @GetMapping("/climberLogin")
+    public String climberLogin(Model model) {
+        model.addAttribute("user", new User());
+        return "climberLogin";
+    }
+
+    @GetMapping("/gymLogin")
+    public String gymLogin(Model model) {
+        model.addAttribute("user", new User());
+        return "gymLogin";
+    }
+
+    @RequestMapping("/authenticate")
+    public String authenticateUser(@RequestParam(value = "email", required = false) String email) {
+        if(userRepo.findByEmail("email")){
+            return "redirect:/users";
+        }
+        return "redirect:/login";
+    }
+
+
+    @GetMapping("/users")
 	public String listUsers(Model model) {
 		List<User> listUsers = userRepo.findAll();
 		model.addAttribute("listUsers", listUsers);
@@ -73,12 +95,6 @@ public class PuzzleController {
         public String deleteUser(@PathVariable(name = "id") Long id) {
         userRepo.deleteById(id);
         return "redirect:/users";
-        }
-        
-        @GetMapping("/login")
-        public String login(Model model) {
-            model.addAttribute("user", new User());
-            return "login";
         }
 
         

@@ -16,32 +16,33 @@ public class User {
      
     @Column(nullable = false, unique = true, length = 45)
     private String email;
-     
+
+    @Column(name = "name", nullable = false, length = 20)
+    private String name;
+
+    @Column(name = "type", nullable = false, length = 20)
+    private String type;
+
     @Column(nullable = false, length = 64)
     private String password;
      
     //We let Hibernate generate the database schema automatically using create in the application.properties for initial schema, not nullable default value is true
-    @Column(name = "first_name", nullable = false, length = 20)
-    private String firstName;
-     
-    @Column(name = "last_name", nullable = false, length = 20)
-    private String lastName;
 
     public User() {
     }
 
-    public User(Long id, String email, String password, String firstName, String lastName) {
+    public User(Long id, String email, String password, String name, String type) {
         this.id = id;
         this.email = email;
         this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.name = name;
+        this.type = type;
     }
     
-    public User(String firstName, String lastName, String email) {
+    public User(String name, String type, String email) {
         this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.name = name;
+        this.type = type;
     }
 
     public Long getId() {
@@ -68,25 +69,25 @@ public class User {
         this.password = password;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getType() {
+        return type;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", email=" + email + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName + '}';
+        return "User{" + "id=" + id + ", email=" + email + ", password=" + password + ", name=" + name + ", type=" + type + '}';
     }
      
     
