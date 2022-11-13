@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2022 at 02:38 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: Nov 13, 2022 at 05:20 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +24,18 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `attempt`
+--
+
+CREATE TABLE `attempt` (
+  `attemptNum` bigint(20) NOT NULL,
+  `date` date NOT NULL,
+  `numOfFalls` bigint(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `gymroute`
 --
 
@@ -35,6 +47,13 @@ CREATE TABLE `gymroute` (
   `name` varchar(255) DEFAULT NULL,
   `notes` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `gymroute`
+--
+
+INSERT INTO `gymroute` (`id`, `climbingStyle`, `difficulty`, `locationAndEnvironment`, `name`, `notes`) VALUES
+(1, 'Top-Rope', '5.13', 'High Point Climbing Gym/Indoor', 'The Pink Dread', 'The most powerful dragon in Westeros.');
 
 -- --------------------------------------------------------
 
@@ -56,7 +75,7 @@ CREATE TABLE `route` (
 --
 
 INSERT INTO `route` (`id`, `climbingStyle`, `difficulty`, `locationAndEnvironment`, `name`, `notes`) VALUES
-(1, 'flash', '5', 'rocky', 'grunge', 'good luck');
+(1, 'Top-Rope', '5.12', 'High Point Climbing Gym/Indoor', 'grunge', 'good luck');
 
 -- --------------------------------------------------------
 
@@ -84,6 +103,12 @@ INSERT INTO `users` (`id`, `email`, `name`, `type`, `password`) VALUES
 --
 
 --
+-- Indexes for table `attempt`
+--
+ALTER TABLE `attempt`
+  ADD PRIMARY KEY (`attemptNum`);
+
+--
 -- Indexes for table `gymroute`
 --
 ALTER TABLE `gymroute`
@@ -107,10 +132,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `attempt`
+--
+ALTER TABLE `attempt`
+  MODIFY `attemptNum` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `gymroute`
 --
 ALTER TABLE `gymroute`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `route`

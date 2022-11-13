@@ -54,4 +54,15 @@ public class GymRouteRepository {
         String query = "DELETE FROM gymroute WHERE id = " + id;
         return template.update(query, namedParameters);
     }
+    
+    public int editGymRoute(long id, String name, String difficulty, String climbingStyle, String locationAndEnvironment, String notes) {
+        SqlParameterSource namedParameters = new MapSqlParameterSource("id", id);
+        String query = "UPDATE gymroute SET name = '" + name +
+                       "', difficulty = '" + difficulty +
+                       "', climbingStyle = '" + climbingStyle +
+                       "', locationAndEnvironment = '" + locationAndEnvironment +
+                       "', notes = '" + notes +
+                       "' WHERE id = " + id;
+        return template.update(query, namedParameters);
+    }
 }

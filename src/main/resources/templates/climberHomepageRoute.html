@@ -31,7 +31,8 @@
                     <div class="header_container" id="my_routes">
                         <div class="header" th:text="${route.name}"></div>
                         <div class="info">
-                            <form action="#">
+                            <form action="#" th:action="@{/climber/routes/edit}" th:object="${route}">
+                                <input type="hidden" th:field="*{id}"/>
                                 <button class="button" type="submit">Edit Route</button>
                             </form>
                             <form action="#" th:action="@{/climber/routes}" method="post" th:object="${route}">
@@ -52,6 +53,7 @@
                             <div class="chart">
                                 <canvas id="myChart"></canvas>
                             </div>
+                            <form action="#" th:action="@{/climber/routes/{id}(id=${route.id})}" method="post" th:object="${attempt}">
                             <div class="table-input">
                                 Date:
                                 <input type="text" name="date" id="date"></input>
@@ -59,6 +61,7 @@
                                 <input type="text" name="num-falls" id="num-falls"></input>
                                 <input class="button3" type="button" value="Add Attempt" onClick="addRow()" id="add"></input>
                             </div>
+                            </form>
                             <table id="table">
                                 <tr>
                                     <th>Date</th>

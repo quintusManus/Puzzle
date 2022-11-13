@@ -118,13 +118,29 @@ public class PuzzleController {
         
         @GetMapping("/climber/routes/{id}")
         public String getRouteByID(@PathVariable("id") long id, Model model) {
+            csc340.caffeinatedfoxes.puzzle.Route route = repo.getRouteById(id);
+            model.addAttribute("route", route);
+            repo.addAttemptTable(route.id);
+            return "climberHomepageRoute";
+        }
+        
+        @PostMapping("/climber/routes/{id}")
+        public String addRouteAttempt(@PathVariable("id") long id, Model model) {
             model.addAttribute("route", repo.getRouteById(id));
             return "climberHomepageRoute";
         }
         
-        @GetMapping("/climber/routes/{id}/edit")
-        public String editRoute(@PathVariable("id") long id, Model model) {
-            model.addAttribute("route", repo.getRouteById(id));
+        @GetMapping("/climber/routes/edit")
+        public String editRoute(@ModelAttribute("route") csc340.caffeinatedfoxes.puzzle.Route route, Model model) {
+            route = repo.getRouteById(route.id);
+            model.addAttribute("route", route);
+            return "climberHomepageEditRoute";
+        }
+        
+        @PostMapping("climber/routes/edit")
+        public String saveEditRoute(@ModelAttribute("route") csc340.caffeinatedfoxes.puzzle.Route route, Model model) {
+            repo.editRoute(route.id, route.name, route.difficulty, route.climbingStyle, route.locationAndEnvironment, route.notes);
+            model.addAttribute("route", repo.getRouteById(route.id));
             return "climberHomepageRoute";
         }
         
@@ -169,6 +185,20 @@ public class PuzzleController {
         @GetMapping("/gym/routes/{id}")
         public String getGymRouteByID(@PathVariable("id") long id, Model model) {
             model.addAttribute("gymroute", repo2.getRouteById(id));
+            return "gymHomepageRoute";
+        }
+        
+        @GetMapping("/gym/routes/edit")
+        public String editGymRoute(@ModelAttribute("gymroute") csc340.caffeinatedfoxes.puzzle.GymRoute gymRoute, Model model) {
+            gymRoute = repo2.getRouteById(gymRoute.id);
+            model.addAttribute("gymroute", gymRoute);
+            return "gymHomepageEditRoute";
+        }
+        
+        @PostMapping("gym/routes/edit")
+        public String saveEditGymRoute(@ModelAttribute("gymroute") csc340.caffeinatedfoxes.puzzle.GymRoute gymRoute, Model model) {
+            repo2.editGymRoute(gymRoute.id, gymRoute.name, gymRoute.difficulty, gymRoute.climbingStyle, gymRoute.locationAndEnvironment, gymRoute.notes);
+            model.addAttribute("gymroute", repo2.getRouteById(gymRoute.id));
             return "gymHomepageRoute";
         }
         

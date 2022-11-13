@@ -49,9 +49,31 @@ public class RouteRepository {
         return template.update(query, paramMap);
     }
     
+    public int addAttemptTable(long routeID) {
+        SqlParameterSource namedParameters = new MapSqlParameterSource("id", routeID);
+        String query = "IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES "
+                        + "WHERE TABLE_SCHEMA = 'route' "
+                        + "AND TABLE_NAME = 'route_" + routeID + "_attempt') "
+                        + "CREATE TABLE 'route'.'route_" + routeID + "_attempt' "
+                        + "(`routeID` BIGINT NOT NULL , `attemptNum` INT NOT NULL AUTO_INCREMENT , "
+                        + "`date` DATE NOT NULL , `numOfFalls` INT NOT NULL , PRIMARY KEY (`attemptNum`))";
+        return template.update(query, namedParameters);
+    }
+    
     public int deleteRoute(long id) {
         SqlParameterSource namedParameters = new MapSqlParameterSource("id", id);
         String query = "DELETE FROM route WHERE id = " + id;
+        return template.update(query, namedParameters);
+    }
+    
+    public int editRoute(long id, String name, String difficulty, String climbingStyle, String locationAndEnvironment, String notes) {
+        SqlParameterSource namedParameters = new MapSqlParameterSource("id", id);
+        String query = "UPDATE route SET name = '" + name +
+                       "', difficulty = '" + difficulty +
+                       "', climbingStyle = '" + climbingStyle +
+                       "', locationAndEnvironment = '" + locationAndEnvironment +
+                       "', notes = '" + notes +
+                       "' WHERE id = " + id;
         return template.update(query, namedParameters);
     }
 }

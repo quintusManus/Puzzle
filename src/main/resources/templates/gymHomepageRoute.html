@@ -30,8 +30,9 @@
                     <div class="header_container" id="my_routes">
                         <div class="header" th:text="${gymroute.name}"></div>
                         <div class="info">
-                            <form action="#top">
-                                <button class="button">Edit Route</button>
+                            <form action="#" th:action="@{/gym/routes/edit}" th:object="${gymroute}">
+                                <input type="hidden" th:field="*{id}"/>
+                                <button class="button" type="submit">Edit Route</button>
                             </form>
                             <form action="#" th:action="@{/gym/routes}" method="post" th:object="${gymroute}">
                                 <input type="hidden" th:field="*{id}"/>
