@@ -15,13 +15,13 @@
                     <div class="sidebar">
                         <ul id="tabs">
                             <li class="inactive">
-                                <a href="/climber/{currentUserId}(currentUserId=${currentUserId})">Home</a>
+                                <a th:href="@{'/climber/' + ${currentUserId}}">Home</a>
                             </li>
                             <li class="active">
-                                <a href="/climber/{currentUserId}(currentUserId=${currentUserId})/routes">My Climbing Routes</a>
+                                <a th:href="@{'/climber/' + ${currentUserId} + '/routes'}">My Climbing Routes</a>
                             </li>
                             <li class="inactive">
-                                <a href="/climber/{currentUserId}(currentUserId=${currentUserId})/gyms">My Climbing Gyms</a>
+                                <a th:href="@{'/climber/' + ${currentUserId} + '/gyms'}">My Climbing Gyms</a>
                             </li>
                             <li>
                                 <a href="/">Log Out</a>
@@ -31,11 +31,11 @@
                     <div class="header_container" id="my_routes">
                         <div class="header" th:text="${route.name}"></div>
                         <div class="info">
-                            <form action="#" th:action="@{/climber/{currentUserId}(currentUserId=${currentUserId})/routes/edit}" th:object="${route}">
+                            <form action="#" th:action="@{'/climber/' + ${currentUserId} + '/routes/edit'}" th:object="${route}">
                                 <input type="hidden" th:field="*{routeID}"/>
                                 <button class="button" type="submit">Edit Route</button>
                             </form>
-                            <form action="#" th:action="@{/climber/{currentUserId}(currentUserId=${currentUserId})/routes}" method="post" th:object="${route}">
+                            <form action="#" th:action="@{'/climber/' + ${currentUserId} + '/routes'}" method="post" th:object="${route}">
                                 <input type="hidden" th:field="*{routeID}"/>
                                 <button class="button" type="submit">Delete Route</button>
                             </form>
@@ -50,7 +50,7 @@
                                     </ul>
                                 </li>
                             </ul>
-                            <form action="#" th:action="@{/climber/{currentUserId}(currentUserId=${currentUserId})/routes/{id}(id=${route.routeID})}" method="post" th:object="${attempt}">
+                            <form action="#" th:action="@{'/climber/' + ${currentUserId} + '/routes/' + ${route.routeID}}" method="post" th:object="${attempt}">
                             <div class="table-input">
                                 Date:
                                 <input type="text" th:field="*{date}"></input>

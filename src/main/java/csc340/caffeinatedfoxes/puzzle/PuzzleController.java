@@ -245,6 +245,13 @@ public class PuzzleController {
             return "gymHomepageRoutes";
     }
 
+    @GetMapping("/climber/{currentUserId}/gyms")
+    public String getGyms(@PathVariable("currentUserId") long currentUserId, Model model) {
+        model.addAttribute("currentUserId", currentUserId);
+        model.addAttribute("routeList", repo.getRoutesByUserID(currentUserId));
+        return "climberHomepageGyms";
+    }
+
     
 
 
