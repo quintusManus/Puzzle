@@ -23,6 +23,9 @@ public class PuzzleController {
         
     @Autowired
     private GymRouteRepository repo2;
+    
+    @Autowired
+    private GymEventRepository repo3;
    
      
     @GetMapping("")
@@ -89,6 +92,7 @@ public class PuzzleController {
     return "redirect:/users";
     }
 
+    //Climber actor
     @GetMapping("/climber")
     public String climberHomepage(Model model) {
             return "climberHomepage";
@@ -138,11 +142,11 @@ public class PuzzleController {
             return "climberHomepageGyms";
     }
 
-    //start here
+    //Gym Actor
     @GetMapping("/gym")
     public String gymHomepage(Model model) {
             model.addAttribute("gymrouteList", repo2.getAllRoutes());
-            return "gymHomepageRoutes";
+            return "gymHomepage";
     }
 
     @GetMapping("/gym/routes")
@@ -176,5 +180,38 @@ public class PuzzleController {
         repo2.createRoute(gymroute.name, gymroute.difficulty, gymroute.climbingStyle, gymroute.locationAndEnvironment, gymroute.notes);
         model.addAttribute("gymrouteList", repo2.getAllRoutes());
         return "gymHomepageRoutes";
+    }
+    
+    @GetMapping("/gym/events")
+    public String getAllGymEvents(Model model) {
+        model.addAttribute("gymeventList", repo3.getAllEvents());
+        return "gymHomepageEvents";
+    }
+
+    @PostMapping("/gym/events")
+    public String deleteGymEventByID(@ModelAttribute("gymevent") GymEvent gymEvent, Model model) {
+        repo3.deleteGymEvent(gymEvent.id);
+        model.addAttribute("gymeventList", repo3.getAllEvents());
+        return "gymHomepageEvents";
+    }
+    
+    @GetMapping("/gym/events/create")
+    public String createGymEvent(Model model){
+        GymEvent gymevent = new GymEvent();
+        model.addAttribute("gymevent", gymevent);
+        return "gymHomepageCreateEvent";
+    }
+
+    @PostMapping("/gym/events/create")
+    public String submitGymEvent(@ModelAttribute("gymevent") GymEvent gymevent, Model model) {
+        repo3.createEvent(gymevent.name, gymevent.description);
+        model.addAttribute("gymeventList", repo3.getAllEvents());
+        return "gymHomepageEvents";
+    }
+    
+    @GetMapping("/gym/events/{id}")
+    public String getGymEventByID(@PathVariable("id") long id, Model model) {
+        model.addAttribute("gymevent", repo3.getEventById(id));
+        return "gymHomepageEvent";
     }
 }

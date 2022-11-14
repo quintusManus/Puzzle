@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+        <title>Gym Homepage</title>
+        <link th:href="@{/css/userHomepage.css}" rel="stylesheet" />
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+        <link rel="stylesheet" type="text/css" href="css/basetemplate.css"/>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <h1>Puzzle</h1>
+            <div class="wrapper">
+                <div class="sidebar">
+                    <ul id="tabs">
+                        <li class="active">
+                            <a href="#top">Home</a>   <!-- We can put in a logo here and make onclick = homepage-->
+                        </li>
+                        <li>
+                            <a href="/gym/routes">Climbing Routes</a>
+                        </li>
+                        <li>
+                            <a href="/gym/gyms">Events</a>
+                        </li>
+                        <li>
+                            <a href="/">Log Out</a>
+                        </li>
+                    </ul>
+                </div>
+
+                    <div class="header_container" id="my_gyms">
+                        <div class="header">Gym Home</div>
+                        <div class="alert alert-success"> You are successfully logged in !</div> <!-- This is an example of javascript interpolation for variable storing in your /resources/static/js folder -->
+                        <div class="info">
+                            <div id="textlogin"> 
+                             <br><br>
+                            <span id="textlogin">************************Anchor custom API that loads data based on geolocation"**************************</span><br><br><br>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

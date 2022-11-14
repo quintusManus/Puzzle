@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+        <title>Gym Homepage Create Route</title>
+        <link th:href="@{/css/userHomepage.css}" rel="stylesheet"/>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div class ="container">
+            <div class="box">
+                <h1>Puzzle</h1>
+                <div class="wrapper">
+                    <div class="sidebar">
+                        <ul id="tabs">
+                            <li class="inactive">
+                                <a href="/gym/routes">Home</a> <!-- We can put in a logo here and make onclick = homepage-->
+                            </li>
+                            <li class="active">
+                                <a href="/gym/routes">Climbing Routes</a>
+                            </li>
+                            <li class="inactive">
+                                <a href="#top">Events</a>
+                            </li>
+                            <li>
+                                <a href="/">Log Out</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header_container" id="my_gyms">
+                        <div class="header">Post Event</div>
+                        <div class="info">
+                            <ul id="new_route">
+                                <li>
+                                    General Information
+                                </li>
+                            </ul>
+                            <form action="#" th:action="@{/gym/events/create}" method="post" th:object="${gymevent}">
+                            <div class="headings">
+                                Title:<br></br>
+                                <textarea th:field="*{name}" name="w3review" rows="3" cols="50"></textarea>
+                                <br></br>Info:
+                                <br></br><textarea th:field="*{description}" id="w3review" name="w3review" rows="4" cols="50"></textarea>
+                            </div>
+                            <button class="button2" type="submit">Post Event</button>
+                            </form>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
