@@ -26,6 +26,7 @@ public class Route {
     protected String locationAndEnvironment;
     protected String notes;
 
+    //================= GETTERS AND SETTERS ===============
     public long getId() {
         return id;
     }

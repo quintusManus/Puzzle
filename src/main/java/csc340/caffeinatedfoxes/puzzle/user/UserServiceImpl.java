@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 /**
  *
  * @author Stuart Bridges
+ * For serving queries from the database
  */
 @Service
 public class UserServiceImpl implements UserService {
@@ -35,4 +36,6 @@ public class UserServiceImpl implements UserService {
     public void delete(long id) {
         userRepository.deleteById(id);
     }
+    
+    
 }
