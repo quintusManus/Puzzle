@@ -25,6 +25,7 @@ public class GymRoute {
     protected String locationAndEnvironment;
     protected String notes;
 
+    //================= GETTERS AND SETTERS ===============
     public long getId() {
         return id;
     }
