@@ -17,15 +17,16 @@ import javax.persistence.Table;
 public class Attempt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected int attemptNum;
+    protected long attemptID;
+    protected long routeID;
     protected Date date;
     protected int numOfFalls;
 
     public Attempt() {
     }
     
-    public Attempt(int attemptNum) {
-        this.attemptNum = attemptNum;
+    public Attempt(int attemptID) {
+        this.attemptID = attemptID;
     }
     
     public Attempt(Date date, int numOfFalls) {
@@ -33,18 +34,33 @@ public class Attempt {
         this.numOfFalls = numOfFalls;
     }
     
-    public Attempt(int attemptNum, Date date, int numOfFalls) {
-        this.attemptNum = attemptNum;
+    public Attempt(long attemptID, Date date, int numOfFalls) {
+        this.attemptID = attemptID;
         this.date = date;
         this.numOfFalls = numOfFalls;
     }
 
-    public int getAttemptNum() {
-        return attemptNum;
+    public Attempt(long routeID, long attemptID, Date date, int numOfFalls) {
+        this.routeID = routeID;
+        this.attemptID = attemptID;
+        this.date = date;
+        this.numOfFalls = numOfFalls;
     }
 
-    public void setAttemptNum(int attemptNum) {
-        this.attemptNum = attemptNum;
+    public long getRouteID() {
+        return routeID;
+    }
+
+    public void setRouteID(long routeID) {
+        this.routeID = routeID;
+    }
+
+    public long getAttemptID() {
+        return attemptID;
+    }
+
+    public void setAttemptID(long attemptID) {
+        this.attemptID = attemptID;
     }
 
     public Date getDate() {

@@ -32,11 +32,11 @@
                         <div class="header" th:text="${route.name}"></div>
                         <div class="info">
                             <form action="#" th:action="@{/climber/routes/edit}" th:object="${route}">
-                                <input type="hidden" th:field="*{id}"/>
+                                <input type="hidden" th:field="*{routeID}"/>
                                 <button class="button" type="submit">Edit Route</button>
                             </form>
                             <form action="#" th:action="@{/climber/routes}" method="post" th:object="${route}">
-                                <input type="hidden" th:field="*{id}"/>
+                                <input type="hidden" th:field="*{routeID}"/>
                                 <button class="button" type="submit">Delete Route</button>
                             </form>
                             <ul>
@@ -50,89 +50,31 @@
                                     </ul>
                                 </li>
                             </ul>
-                            <div class="chart">
-                                <canvas id="myChart"></canvas>
-                            </div>
-                            <form action="#" th:action="@{/climber/routes/{id}(id=${route.id})}" method="post" th:object="${attempt}">
+                            <form action="#" th:action="@{/climber/routes/{id}(id=${route.routeID})}" method="post" th:object="${attempt}">
                             <div class="table-input">
                                 Date:
-                                <input type="text" name="date" id="date"></input>
+                                <input type="text" th:field="*{date}"></input>
                                 Number of Falls:
-                                <input type="text" name="num-falls" id="num-falls"></input>
-                                <input class="button3" type="button" value="Add Attempt" onClick="addRow()" id="add"></input>
+                                <input type="text" th:field="*{numOfFalls}"></input>
+                                <input class="button3" type="submit" value="Add Attempt"></input>
                             </div>
                             </form>
+                            <div class="scroll">
                             <table id="table">
                                 <tr>
                                     <th>Date</th>
                                     <th>Number of Falls</th>
                                 </tr>
+                                <tr th:each="attempt : ${attemptList}">
+                                    <td th:text="${attempt.date}"></td>
+                                    <td th:text="${attempt.numOfFalls}"></td>
+                                </tr>
                             </table>
-                            
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <script>
-            function addRow() {
-                "use strict";
-                
-                var table = document.getElementById("table");
-                var row = document.createElement("tr");
-                var td1 = document.createElement("td");
-                var td2 = document.createElement("td");
-                
-                
-                td1.innerHTML = document.getElementById("date").value;
-                td2.innerHTML = document.getElementById("num-falls").value;
-                
-                row.appendChild(td1);
-                row.appendChild(td2);
-                
-                table.children[0].appendChild(row);
-            }
-        </script>
-        <script>
-            new Chart(document.getElementById('myChart'), {
-                type: 'scatter',  
-                data: {
-                    labels: ['2022-10-08', '2022-10-09', '2022-10-10', '2022-10-11', '2022-10-12', '2022-10-13', '2022-10-14'],
-                    datasets: [{
-                    label: 'My Dataset',
-                    data: [7, 5, 5, 3, 4, 2, 0],
-                    fill: false,
-                    backgroundColor: 'white',
-                    borderColor: 'white'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    title: {
-                        display: true,
-                        text: 'Progress Report'
-                    },
-                    legend: {
-                        display: false
-                    },
-                    scales: {
-                    yAxes: [{
-                        ticks: {
-                            min: 0,
-                            max: 20,
-                            stepSize: 1
-                        }
-                    }],
-                    xAxes: [{
-                        type: 'time',
-                        time: {
-                        unit: 'day',
-                        tooltipFormat: 'MMM DD'
-                        }
-                    }]
-                    }
-                    }
-            });
-        </script>
     </body>
 </html>

@@ -16,22 +16,31 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "route")
-public class Route {
+public class ClimbingRoute {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected long id;
+    protected long routeID;
+    protected long userID;
     protected String name;
     protected String difficulty;
     protected String climbingStyle;
     protected String locationAndEnvironment;
     protected String notes;
 
-    public long getId() {
-        return id;
+    public long getRouteID() {
+        return routeID;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setRouteID(long routeID) {
+        this.routeID = routeID;
+    }
+
+    public long getUserID() {
+        return userID;
+    }
+
+    public void setUserID(long userID) {
+        this.userID = userID;
     }
 
     public String getName() {
@@ -77,18 +86,22 @@ public class Route {
     /**
      * No-args constructor for a Route object.
      */
-    public Route() {
+    public ClimbingRoute() {
+    }
+
+    public ClimbingRoute(long userID) {
+        this.userID = userID;
     }
 
     /**
-     * Constructs a Route object. Excludes the id attribute.
+     * Constructs a Route object. Excludes the id attributes.
      * @param name
      * @param difficulty
      * @param climbingStyle
      * @param locationAndEnvironment
      * @param notes 
      */
-    public Route(String name, String difficulty, String climbingStyle, String locationAndEnvironment, String notes) {
+    public ClimbingRoute(String name, String difficulty, String climbingStyle, String locationAndEnvironment, String notes) {
         this.name = name;
         this.difficulty = difficulty;
         this.climbingStyle = climbingStyle;
@@ -96,17 +109,8 @@ public class Route {
         this.notes = notes;
     }
 
-    /**
-     * Constructs a Route object. Includes the id attribute.
-     * @param id
-     * @param name
-     * @param difficulty
-     * @param climbingStyle
-     * @param locationAndEnvironment
-     * @param notes 
-     */
-    public Route(long id, String name, String difficulty, String climbingStyle, String locationAndEnvironment, String notes) {
-        this.id = id;
+    public ClimbingRoute(long routeID, String name, String difficulty, String climbingStyle, String locationAndEnvironment, String notes) {
+        this.routeID = routeID;
         this.name = name;
         this.difficulty = difficulty;
         this.climbingStyle = climbingStyle;
@@ -114,24 +118,22 @@ public class Route {
         this.notes = notes;
     }
     
-        /**
-     * Constructs a Route object. Excludes the climbing style attribute amd locationAndEnvironment attribute
-     * @param id
-     * @param name
-     * @param difficulty
-     * @param notes 
-     */
-    public Route(long id, String name, String difficulty, String notes) {
-        this.id = id;
+    public ClimbingRoute(String name, long userID, String difficulty, String climbingStyle, String locationAndEnvironment, String notes) {
         this.name = name;
+        this.userID = userID;
         this.difficulty = difficulty;
+        this.climbingStyle = climbingStyle;
+        this.locationAndEnvironment = locationAndEnvironment;
         this.notes = notes;
     }
 
-    @Override
-    public String toString() {
-        return "Route{}";
-    }
-    
-    
+    public ClimbingRoute(long routeID, long userID, String name, String difficulty, String climbingStyle, String locationAndEnvironment, String notes) {
+        this.routeID = routeID;
+        this.userID = userID;
+        this.name = name;
+        this.difficulty = difficulty;
+        this.climbingStyle = climbingStyle;
+        this.locationAndEnvironment = locationAndEnvironment;
+        this.notes = notes;
+    }    
 }

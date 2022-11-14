@@ -1,7 +1,8 @@
 package csc340.caffeinatedfoxes.puzzle;
 
 
-import csc340.caffeinatedfoxes.puzzle.Route;
+import csc340.caffeinatedfoxes.puzzle.ClimbingRoute;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,55 +26,61 @@ public class RouteRepository {
     @Autowired
     NamedParameterJdbcTemplate template;
     
-    public List<Route> getAllRoutes() {
-        String query = "select id, name, difficulty, climbingStyle, locationAndEnvironment, notes from route";
+    public List<ClimbingRoute> getRoutesByUserID(long userID) {
+        String query = "select userID, routeID, name, difficulty, climbingStyle, locationAndEnvironment, notes from route where userID = " + userID;;
         return template.query(query,
                 (result, rowNum)
-                -> new Route(result.getLong("id"), result.getString("name"), result.getString("difficulty"), result.getString("climbingStyle"), result.getString("locationAndEnvironment"), result.getString("notes")));
+                -> new ClimbingRoute(result.getLong("routeID"), userID, result.getString("name"), result.getString("difficulty"), result.getString("climbingStyle"), result.getString("locationAndEnvironment"), result.getString("notes")));
     }
     
-    public Route getRouteById(long id) {
-        SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("id", id);
-        String query = "select * from route where id=:id";
-        return template.queryForObject(query, namedParameters, BeanPropertyRowMapper.newInstance(Route.class));
+    public ClimbingRoute getRouteById(long routeID) {
+        SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("routeID", routeID);
+        String query = "select * from route where routeID=:routeID";
+        return template.queryForObject(query, namedParameters, BeanPropertyRowMapper.newInstance(ClimbingRoute.class));
     }
     
-    public int addRoute(String name, String difficulty, String climbingStyle, String locationAndEnvironment, String notes) {
+    public int addRoute(long userID, String name, String difficulty, String climbingStyle, String locationAndEnvironment, String notes) {
         Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("userID", userID);
         paramMap.put("name", name);
         paramMap.put("difficulty", difficulty);
         paramMap.put("climbingStyle", climbingStyle);
         paramMap.put("locationAndEnvironment", locationAndEnvironment);
         paramMap.put("notes", notes);
-        String query = "INSERT INTO route(name, difficulty, climbingStyle, locationAndEnvironment, notes) VALUES(:name, :difficulty, :climbingStyle, :locationAndEnvironment, :notes)";
+        String query = "INSERT INTO route(userID, name, difficulty, climbingStyle, locationAndEnvironment, notes) VALUES(:userID, :name, :difficulty, :climbingStyle, :locationAndEnvironment, :notes)";
         return template.update(query, paramMap);
     }
     
-    public int addAttemptTable(long routeID) {
-        SqlParameterSource namedParameters = new MapSqlParameterSource("id", routeID);
-        String query = "IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES "
-                        + "WHERE TABLE_SCHEMA = 'route' "
-                        + "AND TABLE_NAME = 'route_" + routeID + "_attempt') "
-                        + "CREATE TABLE 'route'.'route_" + routeID + "_attempt' "
-                        + "(`routeID` BIGINT NOT NULL , `attemptNum` INT NOT NULL AUTO_INCREMENT , "
-                        + "`date` DATE NOT NULL , `numOfFalls` INT NOT NULL , PRIMARY KEY (`attemptNum`))";
+    public int addRouteAttempt(long routeID, Date date, int numOfFalls) {
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("routeID", routeID);
+        paramMap.put("date", date);
+        paramMap.put("numOfFalls", numOfFalls);
+        String query = "INSERT INTO attempt(routeID, date, numOfFalls) VALUES(:routeID, :date, :numOfFalls)";
+        return template.update(query, paramMap);
+    }
+    
+    public List<Attempt> getAllRouteAttempts(long routeID) {
+        String query = "select routeID, attemptID, date, numOfFalls from attempt where routeID = " + routeID;
+        return template.query(query,
+                (result, rowNum)
+                -> new Attempt(result.getLong("routeID"), result.getLong("attemptID"), result.getDate("date"), result.getInt("numOfFalls")));
+    }
+    
+    public int deleteRoute(long routeID) {
+        SqlParameterSource namedParameters = new MapSqlParameterSource("routeID", routeID);
+        String query = "DELETE FROM route WHERE routeID = " + routeID;
         return template.update(query, namedParameters);
     }
     
-    public int deleteRoute(long id) {
-        SqlParameterSource namedParameters = new MapSqlParameterSource("id", id);
-        String query = "DELETE FROM route WHERE id = " + id;
-        return template.update(query, namedParameters);
-    }
-    
-    public int editRoute(long id, String name, String difficulty, String climbingStyle, String locationAndEnvironment, String notes) {
-        SqlParameterSource namedParameters = new MapSqlParameterSource("id", id);
+    public int editRoute(long routeID, String name, String difficulty, String climbingStyle, String locationAndEnvironment, String notes) {
+        SqlParameterSource namedParameters = new MapSqlParameterSource("routeID", routeID);
         String query = "UPDATE route SET name = '" + name +
                        "', difficulty = '" + difficulty +
                        "', climbingStyle = '" + climbingStyle +
                        "', locationAndEnvironment = '" + locationAndEnvironment +
                        "', notes = '" + notes +
-                       "' WHERE id = " + id;
+                       "' WHERE routeID = " + routeID;
         return template.update(query, namedParameters);
     }
 }

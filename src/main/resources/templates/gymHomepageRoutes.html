@@ -34,8 +34,8 @@
                                 <button class="button">Create Route</button>
                             </form>
                             <ul >
-                                <li th:each="gymroute : ${gymrouteList}">
-                                    <a th:href="@{/gym/routes/{id}(id=${gymroute.id})}" th:text="${gymroute.name}"></a>
+                                <li th:each="route : ${routeList}">
+                                    <a th:href="@{/gym/routes/{id}(id=${route.routeID})}" th:text="${route.name}"></a>
                                 </li>
                             </ul>
                         </div>

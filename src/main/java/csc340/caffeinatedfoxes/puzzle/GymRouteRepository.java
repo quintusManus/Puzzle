@@ -1,7 +1,7 @@
 package csc340.caffeinatedfoxes.puzzle;
 
 
-import csc340.caffeinatedfoxes.puzzle.Route;
+import csc340.caffeinatedfoxes.puzzle.ClimbingRoute;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

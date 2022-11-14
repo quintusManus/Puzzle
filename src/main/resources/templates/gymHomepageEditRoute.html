@@ -28,26 +28,26 @@
                         </ul>
                     </div>
                     <div class="header_container" id="my_gyms">
-                        <div class="header" th:text="${gymroute.name}"></div>
+                        <div class="header" th:text="${route.name}"></div>
                         <div class="info">
                             <ul id="new_route">
                                 <li>
                                     General Information
                                 </li>
                             </ul>
-                            <form action="#" th:action="@{/gym/routes/edit}" method="post" th:object="${gymroute}">
+                            <form action="#" th:action="@{/gym/routes/edit}" method="post" th:object="${route}">
                             <div class="headings">
                                 Name:
-                                <input type="text" th:value="${gymroute.name}" th:field="*{name}"></input>
+                                <input type="text" th:value="${route.name}" th:field="*{name}"></input>
                                 Difficulty Level:
-                                <input type="text" th:value="${gymroute.difficulty}" th:field="*{difficulty}"></input>
+                                <input type="text" th:value="${route.difficulty}" th:field="*{difficulty}"></input>
                                 Climbing Style:
-                                <input type="text" th:value="${gymroute.climbingStyle}" th:field="*{climbingStyle}"></input>
+                                <input type="text" th:value="${route.climbingStyle}" th:field="*{climbingStyle}"></input>
                                 Location/Environment:
-                                <input type="text" th:value="${gymroute.locationAndEnvironment}" th:field="*{locationAndEnvironment}"></input>
+                                <input type="text" th:value="${route.locationAndEnvironment}" th:field="*{locationAndEnvironment}"></input>
                                 Notes:
-                                <input type="text" th:value="${gymroute.notes}" th:field="*{notes}"></input>
-                                <input type="hidden" th:field="*{id}"></input>
+                                <input type="text" th:value="${route.notes}" th:field="*{notes}"></input>
+                                <input type="hidden" th:field="*{routeID}"></input>
                             </div>
                             <button class="button2" type="submit">Save Changes</button>
                             </form>

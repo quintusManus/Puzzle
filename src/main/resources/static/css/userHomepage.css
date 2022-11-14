@@ -168,6 +168,11 @@ h1 {
 }
 
 .container .box .header_container .info table {
+    overflow: scroll;
+    height: 20px;
+}
+
+.container .box .header_container .info table {
     border: solid 1px #fefffc;
     width: 45%;
     margin-left: 20px;

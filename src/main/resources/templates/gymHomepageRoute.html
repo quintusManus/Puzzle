@@ -28,24 +28,24 @@
                         </ul>
                     </div>
                     <div class="header_container" id="my_routes">
-                        <div class="header" th:text="${gymroute.name}"></div>
+                        <div class="header" th:text="${route.name}"></div>
                         <div class="info">
-                            <form action="#" th:action="@{/gym/routes/edit}" th:object="${gymroute}">
-                                <input type="hidden" th:field="*{id}"/>
+                            <form action="#" th:action="@{/gym/routes/edit}" th:object="${route}">
+                                <input type="hidden" th:field="*{routeID}"/>
                                 <button class="button" type="submit">Edit Route</button>
                             </form>
-                            <form action="#" th:action="@{/gym/routes}" method="post" th:object="${gymroute}">
-                                <input type="hidden" th:field="*{id}"/>
+                            <form action="#" th:action="@{/gym/routes}" method="post" th:object="${route}">
+                                <input type="hidden" th:field="*{routeID}"/>
                                 <button class="button" type="submit">Delete Route</button>
                             </form>
                             <ul>
                                 <li>
                                     General Information
                                     <ul id="gen_info" >
-                                        <li>Difficulty: <b th:text="${gymroute.difficulty}"/></li>
-                                        <li>Climbing Style: <b th:text="${gymroute.climbingStyle}"/></li>
-                                        <li>Location and Environment: <b th:text="${gymroute.locationAndEnvironment}"/></li>
-                                        <li>Notes: <b th:text="${gymroute.notes}"/></li>
+                                        <li>Difficulty: <b th:text="${route.difficulty}"/></li>
+                                        <li>Climbing Style: <b th:text="${route.climbingStyle}"/></li>
+                                        <li>Location and Environment: <b th:text="${route.locationAndEnvironment}"/></li>
+                                        <li>Notes: <b th:text="${route.notes}"/></li>
                                     </ul>
                                 </li>
                             </ul>
