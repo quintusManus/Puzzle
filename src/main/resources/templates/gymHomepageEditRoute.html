@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-        <title>Gym Homepage Create Route</title>
+    <head>
+        <title>Gym Homepage Edit Route</title>
         <link th:href="@{/css/userHomepage.css}" rel="stylesheet"/>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -14,13 +14,13 @@
                     <div class="sidebar">
                         <ul id="tabs">
                             <li class="inactive">
-                                <a href="/gym/routes">Home</a> <!-- We can put in a logo here and make onclick = homepage-->
+                                <a href="#top">Home</a> <!-- We can put in a logo here and make onclick = homepage-->
                             </li>
                             <li class="active">
                                 <a href="/gym/routes">Climbing Routes</a>
                             </li>
                             <li class="inactive">
-                                <a href="#top">Events</a>
+                                <a href="/gym/events">Events</a>
                             </li>
                             <li>
                                 <a href="/">Log Out</a>
@@ -28,27 +28,28 @@
                         </ul>
                     </div>
                     <div class="header_container" id="my_gyms">
-                        <div class="header">Create Route</div>
+                        <div class="header" th:text="${route.name}"></div>
                         <div class="info">
                             <ul id="new_route">
                                 <li>
                                     General Information
                                 </li>
                             </ul>
-                            <form action="#" th:action="@{/gym/routes/create}" method="post" th:object="${route}">
+                            <form action="#" th:action="@{/gym/routes/edit}" method="post" th:object="${route}">
                             <div class="headings">
                                 Name:
-                                <input type="text" th:field="*{name}"></input>
+                                <input type="text" th:value="${route.name}" th:field="*{name}"></input>
                                 Difficulty Level:
-                                <input type="text" th:field="*{difficulty}"></input>
+                                <input type="text" th:value="${route.difficulty}" th:field="*{difficulty}"></input>
                                 Climbing Style:
-                                <input type="text" th:field="*{climbingStyle}"></input>
+                                <input type="text" th:value="${route.climbingStyle}" th:field="*{climbingStyle}"></input>
                                 Location/Environment:
-                                <input type="text" th:field="*{locationAndEnvironment}"></input>
+                                <input type="text" th:value="${route.locationAndEnvironment}" th:field="*{locationAndEnvironment}"></input>
                                 Notes:
-                                <input type="text" th:field="*{notes}"></input>
+                                <input type="text" th:value="${route.notes}" th:field="*{notes}"></input>
+                                <input type="hidden" th:field="*{routeID}"></input>
                             </div>
-                            <button class="button2" type="submit">Create Route</button>
+                            <button class="button2" type="submit">Save Changes</button>
                             </form>
                         </div>
                     </div>
