@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
@@ -58,7 +59,7 @@ public class PuzzleController {
     }
 
     @RequestMapping("/authenticate")
-    public String authenticateUser(@RequestParam(value = "email", required = false) String email,
+    public String authenticateUser(RedirectAttributes redirectAttributes, @RequestParam(value = "email", required = false) String email,
                                    @RequestParam(value = "password", required = false) String password) {
         boolean value = userRepo.existsByEmail(email);
         boolean value2 = userRepo.existsByPassword(password);
@@ -66,33 +67,48 @@ public class PuzzleController {
             List<User> listUsers = userRepo.findByEmail(email);
             User user = listUsers.get(0);
             String type = user.getType();
+            long id = user.getId();
+            redirectAttributes.addAttribute("currentUserId", id);
             if(type.equals("admin")) {
-                return "redirect:/users";
+                return "redirect:/users/{currentUserId}";
             }
             else if(type.equals("climber")) {
-                return "redirect:/climber";
+                return "redirect:/climber/{currentUserId}";
             }
             if(type.equals("gym")){
-                return "redirect:/gym";
+                return "redirect:/gym/{currentUserId}";
             }
         }
         return "redirect:/login";
     }
 
-    @GetMapping("/users")
-    public String listUsers(Model model) {
-            List<User> listUsers = userRepo.findAll();
-            model.addAttribute("listUsers", listUsers);
-            return "users";
-    }
-
+    @GetMapping("/users/{currentUserId}")
+	public String listUsers(Model model, @PathVariable("currentUserId") long currentUserId) {
+        System.out.println(currentUserId);
+		List<User> listUsers = userRepo.findAll();
+		model.addAttribute("listUsers", listUsers);
+		return "users";
+	}
+        
+    
     @GetMapping("/deleteUser/{id}")
     public String deleteUser(@PathVariable(name = "id") Long id) {
     userRepo.deleteById(id);
     return "redirect:/users";
     }
 
-    //Climber actor
+
+    @GetMapping("/climber/{currentUserId}")
+    public String climberHomepage(Model model, @PathVariable("currentUserId") long currentUserId) {
+            return "climberHomepage";
+    }
+
+    @GetMapping("/gym/{currentUserId}")
+    public String gymHomepage(Model model, @PathVariable("currentUserId") long currentUserId) {
+            model.addAttribute("gymrouteList", repo2.getAllRoutes());
+            return "gymHomepageRoutes";
+    }
+
     @GetMapping("/climber")
     public String climberHomepage(Model model) {
             return "climberHomepage";
@@ -148,7 +164,7 @@ public class PuzzleController {
             model.addAttribute("gymrouteList", repo2.getAllRoutes());
             return "gymHomepage";
     }
-
+    
     @GetMapping("/gym/routes")
     public String getAllGymRoutes(Model model) {
         model.addAttribute("gymrouteList", repo2.getAllRoutes());
