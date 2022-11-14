@@ -15,13 +15,13 @@
                 <div class="sidebar">
                     <ul id="tabs">
                         <li class="inactive">
-                            <a href="/climber">Home</a> <!-- We can put in a logo here and make onclick = homepage-->
+                            <a href="/climber/{currentUserId}(currentUserId=${currentUserId})">Home</a> <!-- We can put in a logo here and make onclick = homepage-->
                         </li>
                         <li class="active">
                             <a href="#top">My Climbing Routes</a>
                         </li>
                         <li class="inactive">
-                            <a href="/climber/gyms">My Climbing Gyms</a>
+                            <a href="/climber/{currentUserId}(currentUserId=${currentUserId})/gyms">My Climbing Gyms</a>
                         </li>
                         <li>
                             <a href="/">Log Out</a>
@@ -31,12 +31,12 @@
                 <div class="header_container" id="my_routes">
                     <div class="header">My Climbing Routes</div>
                     <div class="info">
-                        <form action="/climber/routes/add">
+                        <form action="/climber/{currentUserId}(currentUserId=${currentUserId})/routes/add">
                             <button class="button">Add Route</button>
                         </form>
                         <ul id="my_route_list">
                             <li th:each="route : ${routeList}">
-                                <a th:href="@{/climber/routes/{id}(id=${route.routeID})}" th:text="${route.name}"></a>
+                                <a th:href="@{/climber/{currentUserId}(currentUserId=${currentUserId})/routes/{id}(id=${route.routeID})}" th:text="${route.name}"></a>
                             </li>
                         </ul>
                     </div>

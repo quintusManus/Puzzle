@@ -14,10 +14,10 @@
                     <div class="sidebar">
                         <ul id="tabs">
                             <li>
-                                <a href="/gym/routes">Home</a> <!-- We can put in a logo here and make onclick = homepage-->
+                                <a href="/gym/{currentUserId}(currentUserId=${currentUserId})/routes">Home</a> <!-- We can put in a logo here and make onclick = homepage-->
                             </li>
                             <li class="active">
-                                <a href="/gym/routes">Climbing Routes</a>
+                                <a href="/gym/{currentUserId}(currentUserId=${currentUserId})/routes">Climbing Routes</a>
                             </li>
                             <li class="inactive">
                                 <a href="#top">Events</a>
@@ -30,11 +30,11 @@
                     <div class="header_container" id="my_routes">
                         <div class="header" th:text="${route.name}"></div>
                         <div class="info">
-                            <form action="#" th:action="@{/gym/routes/edit}" th:object="${route}">
+                            <form action="#" th:action="@{/gym/{currentUserId}(currentUserId=${currentUserId})/routes/edit}" th:object="${route}">
                                 <input type="hidden" th:field="*{routeID}"/>
                                 <button class="button" type="submit">Edit Route</button>
                             </form>
-                            <form action="#" th:action="@{/gym/routes}" method="post" th:object="${route}">
+                            <form action="#" th:action="@{/gym/{currentUserId}(currentUserId=${currentUserId})/routes}" method="post" th:object="${route}">
                                 <input type="hidden" th:field="*{routeID}"/>
                                 <button class="button" type="submit">Delete Route</button>
                             </form>

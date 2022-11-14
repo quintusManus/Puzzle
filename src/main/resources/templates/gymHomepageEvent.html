@@ -15,13 +15,13 @@
                     <div class="sidebar">
                         <ul id="tabs">
                             <li class="inactive">
-                                <a href="/climber">Home</a>
+                                <a href="/climber/{currentUserId}(currentUserId=${currentUserId})">Home</a>
                             </li>
                             <li class="active">
-                                <a href="/climber/routes">My Climbing Routes</a>
+                                <a href="/climber/{currentUserId}(currentUserId=${currentUserId})/routes">My Climbing Routes</a>
                             </li>
                             <li class="inactive">
-                                <a href="/climber/gyms">My Climbing Gyms</a>
+                                <a href="/climber/{currentUserId}(currentUserId=${currentUserId})/gyms">My Climbing Gyms</a>
                             </li>
                             <li>
                                 <a href="/">Log Out</a>
@@ -34,7 +34,7 @@
                             <form action="#top">
 <!--                                <button class="button">Edit Event</button>-->
                             </form>
-                            <form action="#" th:action="@{/gym/events}" method="post" th:object="${gymevent}">
+                            <form action="#" th:action="@{/gym/{currentUserId}(currentUserId=${currentUserId})/events}" method="post" th:object="${gymevent}">
                                 <input type="hidden" th:field="*{id}"/>
                                 <li>
                                     <ul id="gen_info" >

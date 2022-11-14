@@ -20,7 +20,7 @@
                                 <a href="#top">Climbing Routes</a>
                             </li>
                             <li class="inactive">
-                                <a href="/gym/events">Events</a>
+                                <a href="/gym/{currentUserId}(currentUserId=${currentUserId})/events">Events</a>
                             </li>
                             <li>
                                 <a href="/">Log Out</a>
@@ -30,12 +30,12 @@
                     <div class="header_container" id="my_gyms">
                         <div class="header">Climbing Routes</div>
                         <div class="info">
-                            <form action="/gym/routes/create">
+                            <form action="/gym/{currentUserId}(currentUserId=${currentUserId})/routes/create">
                                 <button class="button">Create Route</button>
                             </form>
                             <ul >
                                 <li th:each="route : ${routeList}">
-                                    <a th:href="@{/gym/routes/{id}(id=${route.routeID})}" th:text="${route.name}"></a>
+                                    <a th:href="@{/gym/{currentUserId}(currentUserId=${currentUserId})/routes/{id}(id=${route.routeID})}" th:text="${route.name}"></a>
                                 </li>
                             </ul>
                         </div>

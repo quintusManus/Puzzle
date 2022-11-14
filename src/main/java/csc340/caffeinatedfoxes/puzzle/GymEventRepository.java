@@ -21,11 +21,11 @@ public class GymEventRepository {
     @Autowired
     NamedParameterJdbcTemplate template;
     
-    public List<GymEvent> getAllEvents() {
-        String query = "select id, name, description from gymevent";
+    public List<GymEvent> getAllEventsByUserID(long userID) {
+        String query = "select eventID, userID, title, description from gymevent WHERE userID = " + userID;
         return template.query(query,
                 (result, rowNum)
-                -> new GymEvent(result.getLong("id"), result.getString("name"), result.getString("description")));
+                -> new GymEvent(result.getLong("eventID"), result.getLong("userID"), result.getString("title"), result.getString("description")));
     }
     
     public GymEvent getEventById(long id) {
@@ -34,11 +34,12 @@ public class GymEventRepository {
         return template.queryForObject(query, namedParameters, BeanPropertyRowMapper.newInstance(GymEvent.class));
     }
     
-    public int createEvent(String name, String description) {
+    public int createEvent(long userID, String title, String description) {
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("name", name);
+        paramMap.put("userID", userID);
+        paramMap.put("title", title);
         paramMap.put("description", description);
-        String query = "INSERT INTO gymevent(name, description) VALUES(:name, :description)";
+        String query = "INSERT INTO gymevent(userID, title, description) VALUES(:userID, :title, :description)";
         return template.update(query, paramMap);
     }
     

@@ -18,26 +18,35 @@ import javax.persistence.Table;
 public class GymEvent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected long id;
-    protected String name;
+    protected long eventID;
+    protected long userID;
+    protected String title;
     protected String description;
 
     //================= GETTERS AND SETTERS ===============
 
-    public long getId() {
-        return id;
+    public String getTitle() {
+        return title;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    
+    public long getEventID() {
+        return eventID;
     }
 
-    public String getName() {
-        return name;
+    public void setEventID(long eventID) {
+        this.eventID = eventID;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public long getUserID() {
+        return userID;
+    }
+
+    public void setUserID(long userID) {
+        this.userID = userID;
     }
 
     public String getDescription() {
@@ -54,31 +63,17 @@ public class GymEvent {
     public GymEvent() {
     }
 
-    /**
-     * Constructs a GymEvent object. Includes all attributes.
-     * @param id
-     * @param name
-     * @param description
-     */
-    public GymEvent(Long id, String name, String description) {
-        this.id = id;
-        this.name = name;
+    public GymEvent(long eventID, long userID, String title, String description) {
+        this.eventID = eventID;
+        this.userID = userID;
+        this.title = title;
         this.description = description;
     }
 
-    /**
-     * Constructs a GymEvent object. Excludes the id attribute.
-     * @param name
-     * @param description
-     */
-    public GymEvent(String name, String description) {
-        this.name = name;
+    public GymEvent(long userID, String title, String description) {
+        this.userID = userID;
+        this.title = title;
         this.description = description;
-    }
-
-    @Override
-    public String toString() {
-        return "GymEvent{" + "id=" + id + ", name=" + name + ", description=" + description + '}';
     }
     
     
