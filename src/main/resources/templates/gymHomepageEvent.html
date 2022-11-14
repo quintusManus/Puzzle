@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Climber Homepage Route</title>
+        <link th:href="@{/css/userHomepage.css}" rel="stylesheet" />
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+    </head>
+    <body>
+        <div class ="container">
+            <div class="box">
+                <h1>Puzzle</h1>
+                <div class="wrapper">
+                    <div class="sidebar">
+                        <ul id="tabs">
+                            <li class="inactive">
+                                <a href="/climber">Home</a>
+                            </li>
+                            <li class="active">
+                                <a href="/climber/routes">My Climbing Routes</a>
+                            </li>
+                            <li class="inactive">
+                                <a href="/climber/gyms">My Climbing Gyms</a>
+                            </li>
+                            <li>
+                                <a href="/">Log Out</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header_container" id="my_routes">
+                        <div class="header" th:text="${gymevent.name}"></div>
+                        <div class="info">
+                            <form action="#top">
+<!--                                <button class="button">Edit Event</button>-->
+                            </form>
+                            <form action="#" th:action="@{/gym/events}" method="post" th:object="${gymevent}">
+                                <input type="hidden" th:field="*{id}"/>
+                                <li>
+                                    <ul id="gen_info" >
+                                        <br></br>
+                                        <p><b th:text="${gymevent.name}"/></p><br></br>
+                                        <p>Description: <span th:text="${gymevent.description}"/></p>
+                                    </ul>
+                                </li>
+                                <br></br><button class="button" type="submit">Delete Event</button>
+                            </form>
+                            </ul>
+                        </div>
+                    </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

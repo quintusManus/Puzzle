@@ -13,7 +13,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
 
     <title>Sign Up</title>
 </head>
@@ -71,8 +71,11 @@
                             <div class="form-group row">
                                 <label class="col-4 col-form-label">Type: </label>
                                 <div class="col-8">
-                                    <input type="text" th:field="*{type}" class="form-control"
-                                            required minlength="2" maxlength="20" />
+                                    <select th:field="*{type}">
+                                        <option th:value="'climber'" th:text="climber"></option>
+                                        <option th:value="'gym'" th:text="gym"></option>
+                                        <option th:value="'admin'" th:text="admin"></option>
+                                    </select>
                                 </div>
                             </div>
 

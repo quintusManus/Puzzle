@@ -1,17 +1,26 @@
 package csc340.caffeinatedfoxes.puzzle.user;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
- *
- * @author Stuart Bridges
+ * @author sbridges
+ * This class allows the construction of a User object and provides methods
+ * for getting(accessors) and setting(mutators) such an objects attributes. Includes a reference
+ * to the SQL table users.
+ * Last Updated: 11/10/2022
  */
-import javax.persistence.*;
- 
-@Entity
+
+@Entity  //Used to establush mapping between business logic of User class to users table in database
 @Table(name = "users")
 public class User {
      
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  //
     private Long id;
      
     @Column(nullable = false, unique = true, length = 45)
@@ -25,26 +34,8 @@ public class User {
 
     @Column(nullable = false, length = 64)
     private String password;
-     
-    //We let Hibernate generate the database schema automatically using create in the application.properties for initial schema, not nullable default value is true
 
-    public User() {
-    }
-
-    public User(Long id, String email, String password, String name, String type) {
-        this.id = id;
-        this.email = email;
-        this.password = password;
-        this.name = name;
-        this.type = type;
-    }
-    
-    public User(String name, String type, String email) {
-        this.email = email;
-        this.name = name;
-        this.type = type;
-    }
-
+    //================= GETTERS AND SETTERS ===============
     public Long getId() {
         return id;
     }
@@ -82,6 +73,40 @@ public class User {
     }
 
     public void setType(String type) {
+        this.type = type;
+    }
+    
+    /**
+    * No-args constructor for a User object.
+    */
+    public User() {
+    }
+
+    /**
+     * Constructs a User object. Includes all attributes.
+     * @param id
+     * @param email
+     * @param password
+     * @param name
+     * @param type 
+     */
+    public User(Long id, String email, String password, String name, String type) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.type = type;
+    }
+    
+    /**
+    * Constructs a User object. Includes all name, type, and email attributes.
+    * @param name
+    * @param type
+    * @param email 
+    */
+    public User(String name, String type, String email) {
+        this.email = email;
+        this.name = name;
         this.type = type;
     }
 

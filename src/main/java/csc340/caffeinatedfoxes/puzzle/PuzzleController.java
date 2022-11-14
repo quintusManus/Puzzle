@@ -9,10 +9,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.ui.Model;
-import org.springframework.util.RouteMatcher.Route;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
@@ -23,6 +22,9 @@ public class PuzzleController {
     
     @Autowired
     private RouteRepository repo;
+    
+    @Autowired
+    private GymEventRepository repo2;
      
     @GetMapping("")
     public String index(Model model) throws IOException {
@@ -35,20 +37,14 @@ public class PuzzleController {
         return "index";
     }
     
-    
-    
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         model.addAttribute("user", new User());
         return "signup";
     }
     
-    //Actor - Climber / Use Case - Create Account
     @PostMapping("/process_register")
     public String processRegister(User user) {
-//        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//        String encodedPassword = passwordEncoder.encode(user.getPassword());
-//        user.setPassword(encodedPassword);
         userRepo.save(user);
         return "register_success";
     }
@@ -59,49 +55,34 @@ public class PuzzleController {
         return "login";
     }
 
-    @GetMapping("/climberLogin")
-    public String climberLogin(Model model) {
-        model.addAttribute("user", new User());
-        return "climberLogin";
-    }
-
-    @GetMapping("/gymLogin")
-    public String gymLogin(Model model) {
-        model.addAttribute("user", new User());
-        return "gymLogin";
-    }
-
     @RequestMapping("/authenticate")
-    public String authenticateUser(@RequestParam(value = "email", required = false) String email) {
-        if(userRepo.findByEmail("email")){
-            return "redirect:/users";
+    public String authenticateUser(RedirectAttributes redirectAttributes, @RequestParam(value = "email", required = false) String email,
+                                   @RequestParam(value = "password", required = false) String password) {
+        boolean value = userRepo.existsByEmail(email);
+        boolean value2 = userRepo.existsByPassword(password);
+        if(value && value2){
+            List<User> listUsers = userRepo.findByEmail(email);
+            User user = listUsers.get(0);
+            String type = user.getType();
+            long id = user.getId();
+            redirectAttributes.addAttribute("currentUserId", id);
+            if(type.equals("admin")) {
+                return "redirect:/users/{currentUserId}";
+            }
+            else if(type.equals("climber")) {
+                return "redirect:/climber/{currentUserId}";
+            }
+            if(type.equals("gym")){
+                return "redirect:/gym/{currentUserId}";
+            }
         }
         return "redirect:/login";
-    }
-
-
-    @GetMapping("/users")
-	public String listUsers(Model model) {
-            List<User> listUsers = userRepo.findAll();
-            model.addAttribute("listUsers", listUsers);
-            return "users";
-	}
+    }   
         
-        //DELETE
-        @GetMapping("/deleteUser/{id}")
-        public String deleteUser(@PathVariable(name = "id") Long id) {
-            userRepo.deleteById(id);
-            return "redirect:/users";
-        }
-
-        
-        @GetMapping("/climber")
-        public String climberHomepage(Model model) {
-            return "climberHomepage";
-	}
+        //Climber Route Use Cases
         
         @GetMapping("/climber/routes")
-        public String getAllRoutes(Model model) {
+        public String getRoutesByUserID(Model model) {
             long userID = 1;
             model.addAttribute("routeList", repo.getRoutesByUserID(userID));
             return "climberHomepageRoutes";
@@ -167,18 +148,6 @@ public class PuzzleController {
             return "climberHomepageRoutes";
         }
         
-        @GetMapping("/climber/gyms")
-        public String climberHomepageGyms() {
-            return "climberHomepageGyms";
-	}
-        
-        @GetMapping("/gym")
-        public String gymHomepage(Model model) {
-            long userID = 2;
-            model.addAttribute("routeList", repo.getRoutesByUserID(userID));
-            return "gymHomepageRoutes";
-	}
-        
         @GetMapping("/gym/routes")
         public String getAllGymRoutes(Model model) {
             long userID = 2;
@@ -228,4 +197,69 @@ public class PuzzleController {
             model.addAttribute("routeList", repo.getRoutesByUserID(route.userID));
             return "gymHomepageRoutes";
         }
+        
+    @GetMapping("/users/{currentUserId}")
+	public String listUsers(Model model, @PathVariable("currentUserId") long currentUserId) {
+        System.out.println(currentUserId);
+		List<User> listUsers = userRepo.findAll();
+		model.addAttribute("listUsers", listUsers);
+		return "users";
+	}
+        
+    
+    @GetMapping("/deleteUser/{id}")
+    public String deleteUser(@PathVariable(name = "id") Long id) {
+        userRepo.deleteById(id);
+        return "redirect:/users";
+    }
+
+
+    @GetMapping("/climber/{currentUserId}")
+    public String climberHomepage(Model model, @PathVariable("currentUserId") long currentUserId) {
+            return "climberHomepage";
+    }
+
+    @GetMapping("/gym/{currentUserId}")
+    public String gymHomepage(Model model, @PathVariable("currentUserId") long currentUserId) {
+            model.addAttribute("routeList", repo.getRoutesByUserID(currentUserId));
+            return "gymHomepageRoutes";
+    }
+
+    
+
+
+    //Gym Actor
+    
+    @GetMapping("/gym/events")
+    public String getAllGymEvents(Model model) {
+        model.addAttribute("gymeventList", repo2.getAllEvents());
+        return "gymHomepageEvents";
+    }
+
+    @PostMapping("/gym/events")
+    public String deleteGymEventByID(@ModelAttribute("gymevent") GymEvent gymEvent, Model model) {
+        repo2.deleteGymEvent(gymEvent.id);
+        model.addAttribute("gymeventList", repo2.getAllEvents());
+        return "gymHomepageEvents";
+    }
+    
+    @GetMapping("/gym/events/create")
+    public String createGymEvent(Model model){
+        GymEvent gymevent = new GymEvent();
+        model.addAttribute("gymevent", gymevent);
+        return "gymHomepageCreateEvent";
+    }
+
+    @PostMapping("/gym/events/create")
+    public String submitGymEvent(@ModelAttribute("gymevent") GymEvent gymevent, Model model) {
+        repo2.createEvent(gymevent.name, gymevent.description);
+        model.addAttribute("gymeventList", repo2.getAllEvents());
+        return "gymHomepageEvents";
+    }
+    
+    @GetMapping("/gym/events/{id}")
+    public String getGymEventByID(@PathVariable("id") long id, Model model) {
+        model.addAttribute("gymevent", repo2.getEventById(id));
+        return "gymHomepageEvent";
+    }
 }

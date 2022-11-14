@@ -14,12 +14,12 @@
                     <div class="sidebar">
                         <ul id="tabs">
                             <li class="inactive">
-                                <a href="#top">Home</a> <!-- We can put in a logo here and make onclick = homepage-->
-                            </li>
-                            <li class="active">
-                                <a href="#top">Climbing Routes</a>
+                                <a href="/gym">Home</a> <!-- We can put in a logo here and make onclick = homepage-->
                             </li>
                             <li class="inactive">
+                                <a href="/gym/routes">Climbing Routes</a>
+                            </li>
+                            <li class="active">
                                 <a href="/gym/events">Events</a>
                             </li>
                             <li>
@@ -28,14 +28,14 @@
                         </ul>
                     </div>
                     <div class="header_container" id="my_gyms">
-                        <div class="header">Climbing Routes</div>
+                        <div class="header">Events</div>
                         <div class="info">
-                            <form action="/gym/routes/create">
-                                <button class="button">Create Route</button>
+                            <form action="/gym/events/create">
+                                <button class="button">Post Event</button>
                             </form>
-                            <ul >
-                                <li th:each="route : ${routeList}">
-                                    <a th:href="@{/gym/routes/{id}(id=${route.routeID})}" th:text="${route.name}"></a>
+                            <ul>
+                                <li th:each="gymroute : ${gymeventList}">
+                                    <a th:href="@{/gym/events/{id}(id=${gymroute.id})}" th:text="${gymroute.name}"></a>
                                 </li>
                             </ul>
                         </div>
