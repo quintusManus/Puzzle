@@ -104,7 +104,6 @@ public class PuzzleController {
     @GetMapping("/climber/{currentUserId}")
     public String climberHomepage(Model model, @PathVariable("currentUserId") long currentUserId) {
             model.addAttribute("currentUserId", currentUserId);
-            System.out.println("User Id: " + currentUserId);
             model.addAttribute("routeList", repo.getRoutesByUserID(currentUserId));
             return "climberHomepageRoutes";
     }
@@ -120,7 +119,6 @@ public class PuzzleController {
     @GetMapping("/climber/{currentUserId}/routes")
     public String getRoutesByUserID(@PathVariable("currentUserId") long currentUserId, Model model) {
         model.addAttribute("currentUserId", currentUserId);
-        System.out.println("User Id: " + currentUserId);
         model.addAttribute("routeList", repo.getRoutesByUserID(currentUserId));
         return "climberHomepageRoutes";
     }   
@@ -148,7 +146,7 @@ public class PuzzleController {
     public String addRouteAttempt(@PathVariable("currentUserId") long currentUserId, @PathVariable("id") long routeID, @ModelAttribute("attempt") Attempt attempt, Model model) {
         model.addAttribute("currentUserId", currentUserId);
         repo.addRouteAttempt(routeID, attempt.date, attempt.numOfFalls);
-        csc340.caffeinatedfoxes.puzzle.ClimbingRoute route = repo.getRouteById(routeID);
+        ClimbingRoute route = repo.getRouteById(routeID);
         model.addAttribute("route", route);
         model.addAttribute("attemptList", repo.getAllRouteAttempts(routeID));
         return "climberHomepageRoute";
@@ -211,7 +209,6 @@ public class PuzzleController {
     @GetMapping("/gym/{currentUserId}/routes/{id}")
     public String getGymRouteByID(@ModelAttribute("currentUserId") long currentUserId, @PathVariable("id") long routeID, Model model) {
         model.addAttribute("currentUserId", currentUserId);
-        System.out.println("User Id:" + currentUserId);
         model.addAttribute("route", repo.getRouteById(routeID));
         return "gymHomepageRoute";
     }

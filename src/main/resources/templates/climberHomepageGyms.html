@@ -34,11 +34,11 @@
                 <div class="header_container" id="my_gyms">
                     <div class="header">
                         My Climbing Gyms
-                        <div class="topnav">
+                        <!--<div class="topnav">
                             <form th:action="@{'/climber/' + ${currentUserId} + '/gyms'}">
                                 <input type="text" name="keyword" id="keyword" size="20" th:value="${keyword}"  placeholder="Search gyms..." required==true/>
                             </form>
-                        </div>
+                        </div>-->
                     </div>
                     <div class="info">
                         <div></div>
@@ -48,9 +48,8 @@
                                 
                             </li>-->
                         </ul>
-                        
+                        <p>Available Climbing Gyms:</p>
                         <ul id="gyms">
-                            <p>Gyms you are subscribed to:
                             <li th:each="gym : ${filterGyms}">
                                 <a th:text="${gym.name}"></a>
                             </li>
