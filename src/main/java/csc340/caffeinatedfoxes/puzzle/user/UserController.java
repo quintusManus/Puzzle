@@ -1,8 +1,9 @@
 package csc340.caffeinatedfoxes.puzzle.user;
 
 /**
- *
- * @author Stuart Bridges
+ * The user controller class.
+ * @author sdbridges
+ * Last Updated: 11/15/2022
  */
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

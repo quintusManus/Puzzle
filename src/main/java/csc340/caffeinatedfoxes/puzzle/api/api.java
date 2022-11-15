@@ -8,6 +8,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 
+/**
+ * A class for the API.
+ * @author bjwoods
+ * Last Updated: 11/15/2022
+ */
 public class api {
     public static String quote;
     public static String author;

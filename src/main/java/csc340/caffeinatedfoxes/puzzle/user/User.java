@@ -8,13 +8,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * @author sbridges
  * This class allows the construction of a User object and provides methods
  * for getting(accessors) and setting(mutators) such an objects attributes. Includes a reference
  * to the SQL table users.
+ * @author sdbridges
  * Last Updated: 11/10/2022
  */
-
 @Entity  //Used to establush mapping between business logic of User class to users table in database
 @Table(name = "users")
 public class User {
@@ -36,6 +35,7 @@ public class User {
     private String password;
 
     //================= GETTERS AND SETTERS ===============
+    
     public Long getId() {
         return id;
     }
@@ -114,6 +114,4 @@ public class User {
     public String toString() {
         return "User{" + "id=" + id + ", email=" + email + ", password=" + password + ", name=" + name + ", type=" + type + '}';
     }
-     
-    
 }

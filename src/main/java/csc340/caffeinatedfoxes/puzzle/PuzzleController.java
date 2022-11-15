@@ -13,7 +13,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
+/**
+ * The main controller class.
+ * @author smuska, sdbriges, bjwoods
+ * Last Updated: 11/15/2022
+ */
 @Controller
 public class PuzzleController {
  
@@ -26,6 +30,8 @@ public class PuzzleController {
     @Autowired
     private GymEventRepository repo2;
      
+    //Mapping for login and registration
+    
     @GetMapping("")
     public String index(Model model) throws IOException {
         api.randomQuote();
@@ -77,145 +83,9 @@ public class PuzzleController {
             }
         }
         return "redirect:/login";
-    }   
-        
-        //Climber Route Use Cases
-        
-        @GetMapping("/climber/{currentUserId}/routes")
-        public String getRoutesByUserID(@PathVariable("currentUserId") long currentUserId, Model model) {
-            model.addAttribute("currentUserId", currentUserId);
-            System.out.println("User Id: " + currentUserId);
-            model.addAttribute("routeList", repo.getRoutesByUserID(currentUserId));
-            return "climberHomepageRoutes";
-        }
-        
-        @PostMapping("/climber/{currentUserId}/routes")
-        public String deleteRouteByID(@PathVariable("currentUserId") long currentUserId, @ModelAttribute("route") ClimbingRoute route, Model model) {
-            model.addAttribute("currentUserId", currentUserId);
-            repo.deleteRoute(route.routeID);
-            model.addAttribute("routeList", repo.getRoutesByUserID(currentUserId));
-            return "climberHomepageRoutes";
-        }
-        
-        @GetMapping("/climber/{currentUserId}/routes/{id}")
-        public String getRouteByID(@PathVariable("currentUserId") long currentUserId, @PathVariable("id") long routeID, Model model) {
-            model.addAttribute("currentUserId", currentUserId);
-            ClimbingRoute route = repo.getRouteById(routeID);
-            model.addAttribute("route", route);
-            Attempt attempt = new Attempt();
-            model.addAttribute("attempt", attempt);
-            model.addAttribute("attemptList", repo.getAllRouteAttempts(routeID));
-            return "climberHomepageRoute";
-        }
-        
-        @PostMapping("/climber/{currentUserId}/routes/{id}")
-        public String addRouteAttempt(@PathVariable("currentUserId") long currentUserId, @PathVariable("id") long routeID, @ModelAttribute("attempt") Attempt attempt, Model model) {
-            model.addAttribute("currentUserId", currentUserId);
-            repo.addRouteAttempt(routeID, attempt.date, attempt.numOfFalls);
-            csc340.caffeinatedfoxes.puzzle.ClimbingRoute route = repo.getRouteById(routeID);
-            model.addAttribute("route", route);
-            model.addAttribute("attemptList", repo.getAllRouteAttempts(routeID));
-            return "climberHomepageRoute";
-        }
-        
-        @GetMapping("/climber/{currentUserId}/routes/edit")
-        public String editRoute(@PathVariable("currentUserId") long currentUserId, @ModelAttribute("route") ClimbingRoute route, Model model) {
-            model.addAttribute("currentUserId", currentUserId);
-            route = repo.getRouteById(route.routeID);
-            model.addAttribute("route", route);
-            return "climberHomepageEditRoute";
-        }
-        
-        @PostMapping("climber/{currentUserId}/routes/edit")
-        public String saveEditRoute(@PathVariable("currentUserId") long currentUserId, @ModelAttribute("route") ClimbingRoute route, Model model) {
-            model.addAttribute("currentUserId", currentUserId);
-            repo.editRoute(route.routeID, route.name, route.difficulty, route.climbingStyle, route.locationAndEnvironment, route.notes);
-            model.addAttribute("route", repo.getRouteById(route.routeID));
-            long routeID = route.routeID;
-            Attempt attempt = new Attempt();
-            model.addAttribute("attempt", attempt);
-            model.addAttribute("attemptList", repo.getAllRouteAttempts(routeID));
-            return "climberHomepageRoute";
-        }
-        
-        @GetMapping("/climber/{currentUserId}/routes/add")
-        public String addRoute(@PathVariable("currentUserId") long currentUserId, Model model){
-            model.addAttribute("currentUserId", currentUserId);
-            ClimbingRoute route = new ClimbingRoute();
-            model.addAttribute("route", route);
-            return "climberHomepageAddRoute";
-        }
-        
-        @PostMapping("/climber/{currentUserId}/routes/add")
-        public String submitRoute(@PathVariable("currentUserId") long currentUserId, @ModelAttribute("route") ClimbingRoute route, Model model) {
-            model.addAttribute("currentUserId", currentUserId);
-            route.userID = currentUserId;
-            repo.addRoute(route.userID, route.name, route.difficulty, route.climbingStyle, route.locationAndEnvironment, route.notes);
-            model.addAttribute("routeList", repo.getRoutesByUserID(route.userID));
-            return "climberHomepageRoutes";
-        }
-        
-        @GetMapping("/gym/{currentUserId}/routes")
-        public String getAllGymRoutes(@PathVariable("currentUserId") long currentUserId, Model model) {
-            model.addAttribute("currentUserId", currentUserId);
-            long userID = currentUserId;
-            model.addAttribute("routeList", repo.getRoutesByUserID(userID));
-            return "gymHomepageRoutes";
-        }
-        
-        @PostMapping("/gym/{currentUserId}/routes")
-        public String deleteGymRouteByID(@PathVariable("currentUserId") long currentUserId, @ModelAttribute("route") ClimbingRoute route, Model model) {
-            model.addAttribute("currentUserId", currentUserId);
-            repo.deleteRoute(route.routeID);
-            long userID = currentUserId;
-            model.addAttribute("routeList", repo.getRoutesByUserID(userID));
-            return "gymHomepageRoutes";
-        }
-        
-        @GetMapping("/gym/{currentUserId}/routes/{id}")
-        public String getGymRouteByID(@ModelAttribute("currentUserId") long currentUserId, @PathVariable("id") long routeID, Model model) {
-            model.addAttribute("currentUserId", currentUserId);
-            System.out.println("User Id:" + currentUserId);
-            model.addAttribute("route", repo.getRouteById(routeID));
-            return "gymHomepageRoute";
-        }
-        
-        @GetMapping("/gym/{currentUserId}/routes/edit")
-        public String editGymRoute(@PathVariable("currentUserId") long currentUserId, @ModelAttribute("route") ClimbingRoute route, Model model) {
-            model.addAttribute("currentUserId", currentUserId);
-            route = repo.getRouteById(route.routeID);
-            model.addAttribute("route", route);
-            return "gymHomepageEditRoute";
-        }
-        
-        @PostMapping("gym/{currentUserId}/routes/edit")
-        public String saveEditGymRoute(@PathVariable("currentUserId") long currentUserId, @ModelAttribute("route") ClimbingRoute route, Model model) {
-            model.addAttribute("currentUserId", currentUserId);
-            repo.editRoute(route.routeID, route.name, route.difficulty, route.climbingStyle, route.locationAndEnvironment, route.notes);
-            model.addAttribute("route", repo.getRouteById(route.routeID));
-            return "gymHomepageRoute";
-        }
-        
-        @GetMapping("/gym/{currentUserId}/routes/create")
-        public String createGymRoute(@PathVariable("currentUserId") long currentUserId, Model model){
-            model.addAttribute("currentUserId", currentUserId);
-            ClimbingRoute route = new ClimbingRoute();
-            model.addAttribute("route", route);
-            return "gymHomepageCreateRoute";
-        }
-        
-        @PostMapping("/gym/{currentUserId}/routes/create")
-        public String submitGymRoute(@PathVariable("currentUserId") long currentUserId, @ModelAttribute("route") ClimbingRoute route, Model model) {
-            model.addAttribute("currentUserId", currentUserId);
-            route.userID = currentUserId;
-            repo.addRoute(route.userID, route.name, route.difficulty, route.climbingStyle, route.locationAndEnvironment, route.notes);
-            model.addAttribute("routeList", repo.getRoutesByUserID(route.userID));
-            return "gymHomepageRoutes";
-        }
-        
-    //Ben
-        
-    @GetMapping("/users/{currentUserId}")
+    } 
+    
+     @GetMapping("/users/{currentUserId}")
 	public String listUsers(Model model, @PathVariable("currentUserId") long currentUserId) {
         System.out.println(currentUserId);
 		List<User> listUsers = userRepo.findAll();
@@ -244,7 +114,142 @@ public class PuzzleController {
             model.addAttribute("routeList", repo.getRoutesByUserID(currentUserId));
             return "gymHomepageRoutes";
     }
-
+        
+    //Use cases related to the ClimbingRoute Object.
+        
+    @GetMapping("/climber/{currentUserId}/routes")
+    public String getRoutesByUserID(@PathVariable("currentUserId") long currentUserId, Model model) {
+        model.addAttribute("currentUserId", currentUserId);
+        System.out.println("User Id: " + currentUserId);
+        model.addAttribute("routeList", repo.getRoutesByUserID(currentUserId));
+        return "climberHomepageRoutes";
+    }   
+        
+    @PostMapping("/climber/{currentUserId}/routes")
+    public String deleteRouteByID(@PathVariable("currentUserId") long currentUserId, @ModelAttribute("route") ClimbingRoute route, Model model) {
+        model.addAttribute("currentUserId", currentUserId);
+        repo.deleteRoute(route.routeID);
+        model.addAttribute("routeList", repo.getRoutesByUserID(currentUserId));
+        return "climberHomepageRoutes";
+    }
+        
+    @GetMapping("/climber/{currentUserId}/routes/{id}")
+    public String getRouteByID(@PathVariable("currentUserId") long currentUserId, @PathVariable("id") long routeID, Model model) {
+        model.addAttribute("currentUserId", currentUserId);
+        ClimbingRoute route = repo.getRouteById(routeID);
+        model.addAttribute("route", route);
+        Attempt attempt = new Attempt();
+        model.addAttribute("attempt", attempt);
+        model.addAttribute("attemptList", repo.getAllRouteAttempts(routeID));
+        return "climberHomepageRoute";
+    }
+        
+    @PostMapping("/climber/{currentUserId}/routes/{id}")
+    public String addRouteAttempt(@PathVariable("currentUserId") long currentUserId, @PathVariable("id") long routeID, @ModelAttribute("attempt") Attempt attempt, Model model) {
+        model.addAttribute("currentUserId", currentUserId);
+        repo.addRouteAttempt(routeID, attempt.date, attempt.numOfFalls);
+        csc340.caffeinatedfoxes.puzzle.ClimbingRoute route = repo.getRouteById(routeID);
+        model.addAttribute("route", route);
+        model.addAttribute("attemptList", repo.getAllRouteAttempts(routeID));
+        return "climberHomepageRoute";
+    }
+        
+    @GetMapping("/climber/{currentUserId}/routes/edit")
+    public String editRoute(@PathVariable("currentUserId") long currentUserId, @ModelAttribute("route") ClimbingRoute route, Model model) {
+        model.addAttribute("currentUserId", currentUserId);
+        route = repo.getRouteById(route.routeID);
+        model.addAttribute("route", route);
+        return "climberHomepageEditRoute";
+    }
+        
+    @PostMapping("climber/{currentUserId}/routes/edit")
+    public String saveEditRoute(@PathVariable("currentUserId") long currentUserId, @ModelAttribute("route") ClimbingRoute route, Model model) {
+        model.addAttribute("currentUserId", currentUserId);
+        repo.editRoute(route.routeID, route.name, route.difficulty, route.climbingStyle, route.locationAndEnvironment, route.notes);
+        model.addAttribute("route", repo.getRouteById(route.routeID));
+        long routeID = route.routeID;
+        Attempt attempt = new Attempt();
+        model.addAttribute("attempt", attempt);
+        model.addAttribute("attemptList", repo.getAllRouteAttempts(routeID));
+        return "climberHomepageRoute";
+    }
+        
+    @GetMapping("/climber/{currentUserId}/routes/add")
+    public String addRoute(@PathVariable("currentUserId") long currentUserId, Model model){
+        model.addAttribute("currentUserId", currentUserId);
+        ClimbingRoute route = new ClimbingRoute();
+        model.addAttribute("route", route);
+        return "climberHomepageAddRoute";
+    }
+        
+    @PostMapping("/climber/{currentUserId}/routes/add")
+    public String submitRoute(@PathVariable("currentUserId") long currentUserId, @ModelAttribute("route") ClimbingRoute route, Model model) {
+        model.addAttribute("currentUserId", currentUserId);
+        route.userID = currentUserId;
+        repo.addRoute(route.userID, route.name, route.difficulty, route.climbingStyle, route.locationAndEnvironment, route.notes);
+        model.addAttribute("routeList", repo.getRoutesByUserID(route.userID));
+        return "climberHomepageRoutes";
+    }
+        
+    @GetMapping("/gym/{currentUserId}/routes")
+    public String getAllGymRoutes(@PathVariable("currentUserId") long currentUserId, Model model) {
+        model.addAttribute("currentUserId", currentUserId);
+        long userID = currentUserId;
+        model.addAttribute("routeList", repo.getRoutesByUserID(userID));
+        return "gymHomepageRoutes";
+    }
+        
+    @PostMapping("/gym/{currentUserId}/routes")
+    public String deleteGymRouteByID(@PathVariable("currentUserId") long currentUserId, @ModelAttribute("route") ClimbingRoute route, Model model) {
+        model.addAttribute("currentUserId", currentUserId);
+        repo.deleteRoute(route.routeID);
+        long userID = currentUserId;
+        model.addAttribute("routeList", repo.getRoutesByUserID(userID));
+        return "gymHomepageRoutes";
+    }
+        
+    @GetMapping("/gym/{currentUserId}/routes/{id}")
+    public String getGymRouteByID(@ModelAttribute("currentUserId") long currentUserId, @PathVariable("id") long routeID, Model model) {
+        model.addAttribute("currentUserId", currentUserId);
+        System.out.println("User Id:" + currentUserId);
+        model.addAttribute("route", repo.getRouteById(routeID));
+        return "gymHomepageRoute";
+    }
+        
+    @GetMapping("/gym/{currentUserId}/routes/edit")
+    public String editGymRoute(@PathVariable("currentUserId") long currentUserId, @ModelAttribute("route") ClimbingRoute route, Model model) {
+        model.addAttribute("currentUserId", currentUserId);
+        route = repo.getRouteById(route.routeID);
+        model.addAttribute("route", route);
+        return "gymHomepageEditRoute";
+    }
+        
+    @PostMapping("gym/{currentUserId}/routes/edit")
+    public String saveEditGymRoute(@PathVariable("currentUserId") long currentUserId, @ModelAttribute("route") ClimbingRoute route, Model model) {
+        model.addAttribute("currentUserId", currentUserId);
+        repo.editRoute(route.routeID, route.name, route.difficulty, route.climbingStyle, route.locationAndEnvironment, route.notes);
+        model.addAttribute("route", repo.getRouteById(route.routeID));
+        return "gymHomepageRoute";
+    }
+        
+    @GetMapping("/gym/{currentUserId}/routes/create")
+    public String createGymRoute(@PathVariable("currentUserId") long currentUserId, Model model){
+        model.addAttribute("currentUserId", currentUserId);
+        ClimbingRoute route = new ClimbingRoute();
+        model.addAttribute("route", route);
+        return "gymHomepageCreateRoute";
+    }
+        
+    @PostMapping("/gym/{currentUserId}/routes/create")
+    public String submitGymRoute(@PathVariable("currentUserId") long currentUserId, @ModelAttribute("route") ClimbingRoute route, Model model) {
+        model.addAttribute("currentUserId", currentUserId);
+        route.userID = currentUserId;
+        repo.addRoute(route.userID, route.name, route.difficulty, route.climbingStyle, route.locationAndEnvironment, route.notes);
+        model.addAttribute("routeList", repo.getRoutesByUserID(route.userID));
+        return "gymHomepageRoutes";
+    }
+        
+    //
     @GetMapping("/climber/{currentUserId}/gyms")
     public String getGyms(@PathVariable("currentUserId") long currentUserId, Model model) {
         model.addAttribute("currentUserId", currentUserId);
@@ -252,10 +257,7 @@ public class PuzzleController {
         return "climberHomepageGyms";
     }
 
-    
-
-
-    //Gym Actor
+    //Use-Cases related to the GymEvent object.
     
     @GetMapping("/gym/{currentUserId}/events")
     public String getAllGymEvents(@PathVariable("currentUserId") long currentUserId, Model model) {

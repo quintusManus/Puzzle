@@ -4,8 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- *
- * @author Stuart Bridges
+ * The user service class.
+ * @author sdbridges
+ * Last Updated: 11/15/2022
  */
 
 public interface UserService {
@@ -19,6 +20,5 @@ public interface UserService {
     
     //Delete
     void delete(long id);
-    
 }
 

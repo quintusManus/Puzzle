@@ -1,8 +1,9 @@
 package csc340.caffeinatedfoxes.puzzle.user;
 
 /**
- *
- * @author Stuart Bridges
+ * The user repository class.
+ * @author sdbridges
+ * Last Updated: 11/15/2022
  */
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -17,6 +18,4 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Boolean existsByPassword(String password);
 
     List<User> findByEmail(String email);
-
-
 }

@@ -6,8 +6,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 /**
- * @author smuska
  * The database configuration class. Ensures connection to database.
+ * @author smuska
  * Last Updated: 11/6/2022
  */
 @Configuration

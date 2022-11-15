@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2022 at 09:38 PM
+-- Generation Time: Nov 15, 2022 at 06:40 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -33,6 +33,13 @@ CREATE TABLE `attempt` (
   `date` date NOT NULL,
   `numOfFalls` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `attempt`
+--
+
+INSERT INTO `attempt` (`routeID`, `attemptID`, `date`, `numOfFalls`) VALUES
+(5, 19, '2022-11-12', 0);
 
 -- --------------------------------------------------------
 
@@ -76,7 +83,7 @@ CREATE TABLE `route` (
 
 INSERT INTO `route` (`userID`, `routeID`, `climbingStyle`, `difficulty`, `locationAndEnvironment`, `name`, `notes`) VALUES
 (1, 4, 'Top-Rope', '5.13', 'Greensboro Climbing Center/Indoor', 'The Pink Dread', 'The most powerful dragon in Westeros.'),
-(2, 5, 'Top-Rope', '5.9', 'High Point Climbing Gym/Indoor', 'Percy Jackson', 'Have fun!'),
+(2, 5, 'Top-Rope', '5.9', 'High Point Climbing Gym/Indoor', 'Percy Jackson', 'Natural is on.'),
 (1, 11, 'Top-Rope', '5.7', 'Greensboro Climbing Center/Indoor', 'Percy Jackson', 'Natural is on.');
 
 -- --------------------------------------------------------
@@ -99,7 +106,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `email`, `name`, `type`, `password`) VALUES
 (1, 'benewoods02@gmail.com', 'Ben', 'admin', 'puzzledb'),
-(2, 'climber@climber.com', 'climber', 'climber', 'climber');
+(2, 'climber@climber.com', 'climber', 'climber', 'climber'),
+(3, 'gym@gym.com', 'gym', 'gym', 'gymgym');
 
 --
 -- Indexes for dumped tables
@@ -138,25 +146,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `attempt`
 --
 ALTER TABLE `attempt`
-  MODIFY `attemptID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `attemptID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `gymevent`
 --
 ALTER TABLE `gymevent`
-  MODIFY `eventID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `eventID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `route`
 --
 ALTER TABLE `route`
-  MODIFY `routeID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `routeID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

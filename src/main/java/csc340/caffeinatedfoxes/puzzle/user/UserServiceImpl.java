@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 
 
 /**
- *
- * @author Stuart Bridges
- * For serving queries from the database
+ * A class for serving queries from the database.
+ * @author sdbridges
+ * Last Updated: 11/15/2022
  */
 @Service
 public class UserServiceImpl implements UserService {
@@ -36,6 +36,4 @@ public class UserServiceImpl implements UserService {
     public void delete(long id) {
         userRepository.deleteById(id);
     }
-    
-    
 }
