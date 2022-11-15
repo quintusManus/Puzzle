@@ -11,11 +11,16 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Long> {
-	//@Query("SELECT u FROM User u WHERE u.email = ?1")
-	//public User findByEmail(String email);
+    
+    //JPQL Syntax
+    
+    //Search for Gym
+    @Query("SELECT gym FROM User gym WHERE gym.name LIKE %?1% AND gym.type = 'gym'")
+    public List<User> search(String keyword);
 
     Boolean existsByEmail(String email);
     Boolean existsByPassword(String password);
 
     List<User> findByEmail(String email);
+    
 }

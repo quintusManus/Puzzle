@@ -18,10 +18,10 @@
                 <div class="sidebar">
                     <ul id="tabs">
                         <li class="inactive">
-                            <a href="/climber">Home</a> <!-- We can put in a logo here and make onclick = homepage-->
+                            <a th:href="@{'/climber/' + ${currentUserId}}">Home</a> <!-- We can put in a logo here and make onclick = homepage-->
                         </li>
                         <li>
-                            <a href="/climber/routes">My Climbing Routes</a>
+                            <a th:href="@{'/climber/' + ${currentUserId} + '/routes'}">My Climbing Routes</a>
                         </li>
                         <li class="active">
                             <a href="#top">My Climbing Gyms</a>
@@ -35,23 +35,25 @@
                     <div class="header">
                         My Climbing Gyms
                         <div class="topnav">
-                            <input type="text" placeholder="Search gyms...">
-                            </input>
+                            <form th:action="@{'/climber/' + ${currentUserId} + '/gyms'}">
+                                <input type="text" name="keyword" id="keyword" size="20" th:value="${keyword}"  placeholder="Search gyms..." required==true/>
+                            </form>
                         </div>
                     </div>
                     <div class="info">
                         <div></div>
                         <ul id="gyms">
-                            <li>
-                                <a href="greensboroCGRoutesCV.html">The Greensboro Climbing Gym&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                                <a class="btn btn-dark" href="subscribeddummy.html" role="button">Subscribe</a>
+                            
+<!--                            <li th:each="gym : ${gymList}">
+                                
+                            </li>-->
+                        </ul>
+                        
+                        <ul id="gyms">
+                            <p>Gyms you are subscribed to:
+                            <li th:each="gym : ${filterGyms}">
+                                <a th:text="${gym.name}"></a>
                             </li>
-                            <li>
-                                <a href="hangingRockCGRoutesCV.html">The Hanging Rock Climbing Gym &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                                <a class="btn btn-dark" href="#Top" role="button">Subscribe</a>
-                            </li>
-                            <br>
-                                <a>&nbsp;&nbsp;&nbsp;✔️   Pilot Mountain  - Already subscribed</a>
                         </ul>
                     </div>
                 </div>

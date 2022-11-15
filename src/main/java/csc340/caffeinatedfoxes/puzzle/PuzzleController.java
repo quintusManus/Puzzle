@@ -15,7 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  * The main controller class.
- * @author smuska, sdbriges, bjwoods
+ * @author smuska, sdbridges, bjwoods
  * Last Updated: 11/15/2022
  */
 @Controller
@@ -248,12 +248,12 @@ public class PuzzleController {
         model.addAttribute("routeList", repo.getRoutesByUserID(route.userID));
         return "gymHomepageRoutes";
     }
-        
-    //
+    
     @GetMapping("/climber/{currentUserId}/gyms")
-    public String getGyms(@PathVariable("currentUserId") long currentUserId, Model model) {
+    public String getGyms(@PathVariable("currentUserId") long currentUserId, @RequestParam(value = "type", required = false) String type, @RequestParam(value = "keyword", required = false) String keyword, Model model) {
         model.addAttribute("currentUserId", currentUserId);
         model.addAttribute("routeList", repo.getRoutesByUserID(currentUserId));
+        model.addAttribute("filterGyms", userRepo.search(keyword));       
         return "climberHomepageGyms";
     }
 
