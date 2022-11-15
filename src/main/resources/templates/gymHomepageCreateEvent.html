@@ -14,10 +14,10 @@
                     <div class="sidebar">
                         <ul id="tabs">
                             <li class="inactive">
-                                <a href="/gym/{currentUserId}(currentUserId=${currentUserId})/routes">Home</a> <!-- We can put in a logo here and make onclick = homepage-->
+                                <a th:href="@{'/gym/' + ${currentUserId} + '/routes'}">Home</a> <!-- We can put in a logo here and make onclick = homepage-->
                             </li>
                             <li class="active">
-                                <a href="/gym/{currentUserId}(currentUserId=${currentUserId})/routes">Climbing Routes</a>
+                                <a th:href="@{'/gym/' + ${currentUserId} + '/routes'}">Climbing Routes</a>
                             </li>
                             <li class="inactive">
                                 <a href="#top">Events</a>
@@ -35,10 +35,10 @@
                                     General Information
                                 </li>
                             </ul>
-                            <form action="#" th:action="@{/gym/{currentUserId}(currentUserId=${currentUserId})/events/create}" method="post" th:object="${gymevent}">
+                            <form action="#" th:action="@{'/gym/' + ${currentUserId} + '/events/create'}" method="post" th:object="${gymevent}">
                             <div class="headings">
                                 Title:<br></br>
-                                <textarea th:field="*{name}" name="w3review" rows="3" cols="50"></textarea>
+                                <textarea th:field="*{title}" name="w3review" rows="3" cols="50"></textarea>
                                 <br></br>Info:
                                 <br></br><textarea th:field="*{description}" id="w3review" name="w3review" rows="4" cols="50"></textarea>
                             </div>

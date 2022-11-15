@@ -285,9 +285,9 @@ public class PuzzleController {
     @PostMapping("/gym/{currentUserId}/events/create")
     public String submitGymEvent(@PathVariable("currentUserId") long currentUserId, @ModelAttribute("gymevent") GymEvent gymevent, Model model) {
         model.addAttribute("currentUserId", currentUserId);
-        long userID = currentUserId;
+        gymevent.userID = currentUserId;
         repo2.createEvent(gymevent.userID, gymevent.title, gymevent.description);
-        model.addAttribute("gymeventList", repo2.getAllEventsByUserID(userID));
+        model.addAttribute("gymeventList", repo2.getAllEventsByUserID(currentUserId));
         return "gymHomepageEvents";
     }
     

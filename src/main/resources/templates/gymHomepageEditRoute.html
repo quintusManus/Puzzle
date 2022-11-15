@@ -17,10 +17,10 @@
                                 <a href="#top">Home</a> <!-- We can put in a logo here and make onclick = homepage-->
                             </li>
                             <li class="active">
-                                <a href="/gym/{currentUserId}(currentUserId=${currentUserId})/routes">Climbing Routes</a>
+                                <a th:href="@{'/gym/' + ${currentUserId} + '/routes'}">Climbing Routes</a>
                             </li>
                             <li class="inactive">
-                                <a href="/gym/{currentUserId}(currentUserId=${currentUserId})/events">Events</a>
+                                <a th:href="@{'/gym/' + ${currentUserId} + '/events'}">Events</a>
                             </li>
                             <li>
                                 <a href="/">Log Out</a>
@@ -35,7 +35,7 @@
                                     General Information
                                 </li>
                             </ul>
-                            <form action="#" th:action="@{/gym/{currentUserId}(currentUserId=${currentUserId})/routes/edit}" method="post" th:object="${route}">
+                            <form action="#" th:action="@{'/gym/' + ${currentUserId} + '/routes/edit'}" method="post" th:object="${route}">
                             <div class="headings">
                                 Name:
                                 <input type="text" th:value="${route.name}" th:field="*{name}"></input>

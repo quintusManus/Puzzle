@@ -15,13 +15,13 @@
                     <div class="sidebar">
                         <ul id="tabs">
                             <li class="inactive">
-                                <a href="/climber/{currentUserId}(currentUserId=${currentUserId})">Home</a>
+                                <a th:href="@{'/gym/' + ${currentUserId}}">Home</a>
                             </li>
                             <li class="active">
-                                <a href="/climber/{currentUserId}(currentUserId=${currentUserId})/routes">My Climbing Routes</a>
+                                <a th:href="@{'/gym/' + ${currentUserId} + '/routes'}">My Climbing Routes</a>
                             </li>
                             <li class="inactive">
-                                <a href="/climber/{currentUserId}(currentUserId=${currentUserId})/gyms">My Climbing Gyms</a>
+                                <a th:href="@{'/gym/' + ${currentUserId} + '/events'}">Events</a>
                             </li>
                             <li>
                                 <a href="/">Log Out</a>
@@ -29,17 +29,17 @@
                         </ul>
                     </div>
                     <div class="header_container" id="my_routes">
-                        <div class="header" th:text="${gymevent.name}"></div>
+                        <div class="header" th:text="${gymevent.title}"></div>
                         <div class="info">
                             <form action="#top">
 <!--                                <button class="button">Edit Event</button>-->
                             </form>
-                            <form action="#" th:action="@{/gym/{currentUserId}(currentUserId=${currentUserId})/events}" method="post" th:object="${gymevent}">
-                                <input type="hidden" th:field="*{id}"/>
+                            <form action="#" th:action="@{'/gym/' + ${currentUserId} + '/events'}" method="post" th:object="${gymevent}">
+                                <input type="hidden" th:field="*{eventID}"/>
                                 <li>
                                     <ul id="gen_info" >
                                         <br></br>
-                                        <p><b th:text="${gymevent.name}"/></p><br></br>
+                                        <p><b th:text="${gymevent.title}"/></p><br></br>
                                         <p>Description: <span th:text="${gymevent.description}"/></p>
                                     </ul>
                                 </li>

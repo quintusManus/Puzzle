@@ -28,9 +28,9 @@ public class GymEventRepository {
                 -> new GymEvent(result.getLong("eventID"), result.getLong("userID"), result.getString("title"), result.getString("description")));
     }
     
-    public GymEvent getEventById(long id) {
-        SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("id", id);
-        String query = "select * from gymevent where id=:id";
+    public GymEvent getEventById(long eventID) {
+        SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("eventID", eventID);
+        String query = "select * from gymevent where eventID=:eventID";
         return template.queryForObject(query, namedParameters, BeanPropertyRowMapper.newInstance(GymEvent.class));
     }
     
@@ -43,9 +43,9 @@ public class GymEventRepository {
         return template.update(query, paramMap);
     }
     
-    public int deleteGymEvent(long id) {
-        SqlParameterSource namedParameters = new MapSqlParameterSource("id", id);
-        String query = "DELETE FROM gymevent WHERE id = " + id;
+    public int deleteGymEvent(long eventID) {
+        SqlParameterSource namedParameters = new MapSqlParameterSource("eventID", eventID);
+        String query = "DELETE FROM gymevent WHERE eventID = " + eventID;
         return template.update(query, namedParameters);
     }
 }
