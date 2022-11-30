@@ -55,7 +55,7 @@
                     <td th:text="${user.name}">Name</td>
                     <td th:text="${user.type}">Type</td>
                     <td>
-                        <a th:href="@{'/deleteUser/' + ${user.id}}" class="btn btn-danger" role="button">Delete</a>
+                        <a th:href="@{'/deleteUser/' + ${currentUserId} + '/' + ${user.id}}" class="btn btn-danger" role="button">Delete</a>
                     </td>
                 </tr>
                 

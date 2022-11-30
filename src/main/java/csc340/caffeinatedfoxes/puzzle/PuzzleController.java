@@ -92,12 +92,13 @@ public class PuzzleController {
 		model.addAttribute("listUsers", listUsers);
 		return "users";
 	}
-        
-    
-    @GetMapping("/deleteUser/{id}")
-    public String deleteUser(@PathVariable(name = "id") Long id) {
+
+
+    @GetMapping("/deleteUser/{currentUserId}/{id}")
+    public String deleteUser(@PathVariable(name = "id") Long id, @PathVariable("currentUserId") long currentUserId, Model model) {
+        model.addAttribute("currentUserId", currentUserId);
         userRepo.deleteById(id);
-        return "redirect:/users";
+        return "redirect:/users/{currentUserId}";
     }
 
 
